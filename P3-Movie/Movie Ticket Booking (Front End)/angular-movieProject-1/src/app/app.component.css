@@ -1,0 +1,22 @@
+#bimg {
+    /* background-image: url(background.jpg);
+    background-repeat: no-repeat; */
+    width: 100%;
+    /* height: 100vh; */
+    /* min-height: 100px; */
+       min-height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),url(background.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: ;
+    position: relative;
+
+ 
+}
+
+.card-body{
+   background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75));
+}
+.card-title{
+    color:whitesmoke;
+}

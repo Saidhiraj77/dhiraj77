@@ -1,0 +1,197 @@
+
+ <!doctype html>
+ <html lang="en">
+   <head>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     
+     <title>Movie is Life!</title>
+   </head>
+
+   <div class="row">
+    <!-- <div class="col-md-8"><app-courasel-movie></app-courasel-movie></div> -->
+    <div class="col-md-7" style="color: darkgrey"><br><br><br><br><br>
+      <!-- <h2 style="text-align: center;"> Welcome to <br>
+        @MovieBooking.com</h2>
+        <h3 style="font-style: italic; font-weight: bold; text-align: center; font-family:cursive">“ The whole of life is just like watching a film..."</h3>   -->
+        <h4 style="font-style: italic; font-weight: bold; text-align: center; font-family:cursive">“ The whole life is just like watching a film."</h4>  
+        <h4 style="font-style: italic; font-weight: bold; margin-left:700px; font-family:cursive">..Terry</h4>   <br>
+        <h4 style="font-style: italic; font-weight: bold; text-align: center; font-family:cursive">“ Cinema can fill your empty spaces in life and loneliness"</h4>  
+        <h4 style="font-style: italic; font-weight: bold; margin-left:750px; font-family:cursive">..Pedro</h4>   <br>
+
+    </div>
+    <div class="col-md-4">
+         
+   <body>
+    <div class="box-shadow"> 
+    <div id="bg1">
+        <form [formGroup]="signupForm">
+          <br>
+            <h3 style="text-align:center;">Create Your Account</h3> 
+          
+    
+             <div class="form-group">
+              <label for="username" class="col-form-label">User Name: </label>
+              <input type="text"  name="" id="username" placeholder="Enter Your Name"class="form-control" formControlName="username" [ngClass]="{'is-invalid': signupForm.get('username').touched && signupForm.get('username').invalid}">
+              <div *ngIf="signupForm.get('username').touched && signupForm.get('username').invalid" class="invalid-feedback">
+                <div *ngIf="signupForm.get('username').errors.required">UserName is required</div>
+                <div *ngIf="signupForm.get('username').errors.minlength">Min Length 5 </div>
+                <div *ngIf="signupForm.get('username').errors.maxlength">Max Length 10 </div>
+              </div>
+            </div> 
+
+            <div class="form-group">
+              <label for="email" class="form-label">Email Id</label>
+              <input type="text" id="email" class="form-control" placeholder="Enter Your Email Address" formControlName="email" [ngClass]="{'is-invalid': signupForm.get('email').touched && signupForm.get('email').invalid}" />
+               <div *ngIf="signupForm.get('email').touched && signupForm.get('email').invalid" class="invalid-feedback">
+                 <div *ngIf="signupForm.get('email').errors.required">Email is required</div>
+                 <div *ngIf="signupForm.get('email').errors.email">Email is must be valid email address</div>
+               </div>
+            </div> 
+
+            
+            <div class="mb-3">
+              <label for="phone" class="form-label">Phone No</label>
+              <input type="number" class="form-control" placeholder="Enter Phone number" id="phone" formControlName="phone" [ngClass]="{'is-invalid': signupForm.get('phone').touched && signupForm.get('phone').invalid}" />
+              
+             <div *ngIf="signupForm.get('phone').touched && signupForm.get('phone').invalid" class="invalid-feedback">
+               <div *ngIf="signupForm.get('phone').errors.required"> Phone number is required</div>
+               <div *ngIf="signupForm.get('phone').errors.pattern">Enter Valid Phone number</div>
+             </div>
+            </div> 
+
+            
+            <div class="mb-3 form-radio">
+              <label class="form-label" >Gender</label> &nbsp;
+              <input type="radio" name="gender" value="male" class="form-radio-input" id="exampleCheck1"  formControlName="gender" >
+              <label class="form-radio-label" for="exampleCheck1">Male</label>&nbsp;
+              <input type="radio" name="gender"  value="female" class="form-radio-input" id="exampleCheck1"  formControlName="gender">
+              <label class="form-radio-label" for="exampleCheck1">Female</label>
+            </div> 
+
+            <div class="form-group">
+              <label for="password" class="col-form-label">Create Password: </label>
+              <input type="password"  name="password" id="password" placeholder="Password" class="form-control" formControlName="password" [ngClass]="{'is-invalid': signupForm.get('password').touched && signupForm.get('password').invalid}">
+              <div *ngIf="signupForm.get('password').touched && signupForm.get('password').invalid" class="invalid-feedback">
+                <div *ngIf="signupForm.get('password').errors.required">Password is required</div>
+                <div *ngIf="signupForm.get('password').errors.minlength">Min Length 6 </div>
+                <div *ngIf="signupForm.get('password').errors.maxlength">Max Length 10 </div>
+              </div>
+            </div> 
+
+            <div class="form-group">
+              <label for="cpassword" class="col-form-label">Re-Enter Password: </label>
+              <input type="password"  name="cpassword" id="cpassword" placeholder="Confirm Password" class="form-control" formControlName="cpassword" [ngClass]="{'is-invalid': signupForm.get('cpassword').touched && signupForm.get('cpassword').invalid}">
+              <div *ngIf="signupForm.get('cpassword').touched && signupForm.get('cpassword').invalid" class="invalid-feedback">
+                <div *ngIf="signupForm.get('cpassword').errors.required && signupForm.get('cpassword').invalid">Confirm Password is required</div>
+                <div *ngIf="signupForm.get('cpassword').errors.MustMatch && signupForm.get('cpassword').invalid">Confirm Password Didn't match </div>
+              </div>
+            </div> 
+
+            <input type="button" value="Generate Otp"  class="btn btn-success" (click)="fnGenerateOtp()"><label>&nbsp;{{message}} </label><br><br>
+           <label>Enter Otp:</label> 
+            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; <input type="text" name="abcd" placeholder="Enter OTP" id="" [(ngModel)]="txtOtp"  (keyup)="fnValidateOtp()" formControlName="otp">
+            <br>
+ 
+            <input [disabled]=x  type="button" class="btn btn-primary btn-block" value="Submit" (click)="signup() " style="margin-top: 10px;"><br>
+            <!-- <input type="reset" value="Reset" class="btn btn-warning"> -->
+             <div style="color: white; text-align: center;" id= "signupsuccess" *ngIf="signStatus">
+             Successfully Account is Registered. <br> <a [routerLink]="['/login']"> Click here </a> to Login. <br>
+             </div> <br>
+       
+
+<!-- 
+             <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Create Password</label>
+
+              <input type="password" id="exampleInputPassword1" class="form-control" placeholder="Password" name="password" formControlName="password">
+              <div class="err"  *ngIf=" submitted && f.password.errors" ></div>
+                    <div class="err" *ngIf=" f.password.errors.required "  > Password is required</div>
+                    <div class="err" *ngIf=" f.password.errors.minlength " >Password At Least 6 </div>
+             </div> -->
+
+            
+<!-- 
+             <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Re-Enter Password</label>
+
+              <input type="password" id="exampleInputPassword1" class="form-control" placeholder="Confirm Password" name="cpassword" formControlName="cpassword">
+              <div class="err"  *ngIf=" submitted && f.cpassword.errors && f.cpassword.touched " ></div>
+                    <div class="err" *ngIf=" f.cpassword.errors.required && f.cpassword.touched "  > Confirm Password is required</div>
+                    <div class="err" *ngIf=" f.cpassword.errors.MustMatch && f.cpassword.touched " >Confirm Password  Didn't match</div>
+             </div>  -->
+
+        
+
+              <!--   <div class="mb-3">
+                <label for="exampleInputPassword2" class="form-label">Re-Enter Password</label>
+                <div [ngClass]="{'has-error': f.cpassword.errors && f.cpassword.touched }">
+                <input type="password" id="exampleInputPassword2" class="form-control" formControlName="cpassword">
+              </div> <br> -->
+
+             <!-- username :
+             <div class='has-error'>
+                 <input type="text" id="" name="" class="form-control" formControlName="username">
+             </div>
+             <div class="form-group">
+              <label>Email Add</label>
+               <input type="email" name="" id="" class="form-control" placeholder="Enter email" formControlName="email">
+               <span class="error" *ngIf="email.invalid && email.touched ">email is required</span>
+             </div>
+             <div class="form-group">
+              <label>Password</label>
+               <input type="password" name="" id="" class="form-control" placeholder="Password">
+             </div> -->
+        </form>
+        </div>
+      
+    </div>
+    <!-- {{ signupForm.value | json}} <br>
+    {{f.password.errors.minlength  | json}} -->
+    <!-- {{f.username.errors | json}} <br>
+    {{f.username.errors.valid | json}}  -->
+    <!-- <br> -->
+
+    
+    <!-- <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <th>UserName</th><th>Password</th>
+        </thead>
+        <tbody>
+           <tr *ngFor="let u of users">
+                <td>{{u.username}}</td>
+                <td>{{u.password}}</td>
+              
+            </tr>
+          </tbody>    
+    </table> -->
+   
+  </body><br><br><br><br>
+    </div>
+    <div class="col-md-0">
+
+    </div>
+  </div>
+
+ </html>
+
+
+ <!-- <form [formGroup]="signupForm"  class="container-fluid">
+    User Name: <input type="text" name="" id="" formControlName="username" class="form-control">
+    Password: <input type="password" name="" id="" formControlName="password" class="form-control">
+    Confirm Password: <input type="text" name="" id="" formControlName="confirmPassword" class="form-control">
+    <input type="button" value="Sign Up" class="btn btn-success" (click)="signup()">&nbsp;
+    <input type="reset" value="Reset" class="btn btn-warning">
+</form>
+<br>
+{{signupForm.value | json}}
+ -->
+<!-- <form [formGroup]="loginForm"  class="container-fluid">
+    User Name: <input type="text" name="" id="" formControlName="username" class="form-control">
+    Password: <input type="password" name="" id="" formControlName="password" class="form-control">
+    <input type="button" value="Login" class="btn btn-success" (click)="login()">&nbsp;
+    <input type="reset" value="Reset" class="btn btn-warning">
+</form>
+<br>
+{{loginForm.value | json}}
+ -->

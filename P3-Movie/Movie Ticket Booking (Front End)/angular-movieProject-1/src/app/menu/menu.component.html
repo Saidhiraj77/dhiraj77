@@ -1,0 +1,47 @@
+<head>
+
+</head>
+
+       <div class="banner" >
+        <div class="navbar">
+           <img style="margin-left: 100px;"  src="http://4.bp.blogspot.com/-hgCC8bGQGlE/UoXSMEiZubI/AAAAAAAAAdo/1vKKT0rWZvw/s1600/logo+m.png" class="logo" style="height: 100px; width: 100px;">
+           <ul> 
+            <li>
+        <form>
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search" name="search"  [(ngModel)]="bid" style="width: 300px;" >
+            <div class="input-group-btn"> 
+             <button class="btn btn-info" type=submit (click)="fnSearch()">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+            </div>
+          </div>
+        </form></li>
+               <li><a [routerLink]="['/mainHome']">Home</a> </li>
+               <li><a [routerLink]="['/aboutUs']">ABOUT US</a> </li>
+     
+
+               <span class="dropdown">
+                <button class="dropbtn">CONTACT US</button>
+                <span class="dropdown-content">
+                <a href="#">kranthikumar@gmail.com</a>
+              
+                <a href="#">8978086371</a>
+                </span>
+              </span>
+             
+               <li><a class="nav-link" [routerLink]="['./signup']" *ngIf="signupnave" > Sign Up</a></li>
+               <li > <a href="#"  class="nav-link" style="font-weight:bold; color: rgba(157, 171, 173, 0.575);" > &nbsp; &nbsp;<i class="far fa-user-circle " *ngIf!="signupnave" ></i> <span class="far fa-user pr-2" aria-hidden="true" ></span>   {{userName | uppercase}} </a></li> 
+               <li><a class="nav-link" [routerLink]="[status]"  >{{status | titlecase}}</a></li>
+
+           </ul>
+        </div>
+    </div>
+
+
+
+
+
+
+
+

@@ -1,0 +1,91 @@
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<div class="container-fluid">
+    <div class="row">
+      
+      <div class="col-sm-4">
+        <div class="sidebar"><br><br><br><br><br><br><br><br>
+          <a [routerLink]="['/home']">&nbsp;<i class="fa fa-fw fa-home"></i> Home</a>
+          <a [routerLink]="['/movie']">&nbsp;<i class="fa fa-film"></i> Add Movies</a>
+          <a [routerLink]="['/theatre']">&nbsp;<i class="fa fa-building-o" ></i> Add Theatres</a>
+          <a [routerLink]="['/manageuser']"><i class="fa fa-fw fa-user"></i> Manage Users</a>
+          <a [routerLink]="['/contactUs']"><i class="fa fa-fw fa-envelope"></i> FAQ'S</a>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <form [formGroup]="adminMovieForm">
+          
+          <label>Movie Id:</label>   <input type="number" placeholder="Enter Movie Id"  name="" id="" formControlName="movieId" class="form-control" [ngClass]="{'is-invalid': adminMovieForm.get('movieId').touched && adminMovieForm.get('movieId').invalid}">
+          <div *ngIf="adminMovieForm.get('movieId').touched && adminMovieForm.get('movieId').invalid" class="invalid-feedback">
+            <div *ngIf="adminMovieForm.get('movieId').errors.required && adminMovieForm.get('movieId').invalid"> Required</div>
+          </div>
+         
+          <label>Movie Name:</label>   <input type="text" name="" id="" placeholder="Enter Movie Name"  formControlName="movieName" class="form-control" [ngClass]="{'is-invalid': adminMovieForm.get('movieName').touched && adminMovieForm.get('movieName').invalid}">
+          <div *ngIf="adminMovieForm.get('movieName').touched && adminMovieForm.get('movieName').invalid" class="invalid-feedback">
+            <div *ngIf="adminMovieForm.get('movieName').errors.required && adminMovieForm.get('movieName').invalid"> Required</div>
+          </div>
+         
+          <label>No Of Tickets:</label>   <input type="text" name="" id="" placeholder="Enter No of Tickets"  formControlName="noOfTickets" class="form-control" [ngClass]="{'is-invalid': adminMovieForm.get('noOfTickets').touched && adminMovieForm.get('noOfTickets').invalid}">
+          <div *ngIf="adminMovieForm.get('noOfTickets').touched && adminMovieForm.get('noOfTickets').invalid" class="invalid-feedback">
+            <div *ngIf="adminMovieForm.get('noOfTickets').errors.required && adminMovieForm.get('noOfTickets').invalid"> Required</div>
+          </div>
+         
+          <label>Theatre Id:</label>  <input type="number" name="" id="" placeholder="Enter Theatre Id"  formControlName="theatreId" class="form-control" [ngClass]="{'is-invalid': adminMovieForm.get('theatreId').touched && adminMovieForm.get('theatreId').invalid}">
+          <div *ngIf="adminMovieForm.get('theatreId').touched && adminMovieForm.get('theatreId').invalid" class="invalid-feedback">
+            <div *ngIf="adminMovieForm.get('theatreId').errors.required && adminMovieForm.get('theatreId').invalid"> Required</div>
+          </div>
+          
+          <!-- <label>Picture: </label>   <input type="file" name="" id="" formControlName="image" class="form-control" (change)="onFileChanged($event)" [ngClass]="{'is-invalid': adminMovieForm.get('image').touched && adminMovieForm.get('image').invalid}"> 
+          <div *ngIf="adminMovieForm.get('image').touched && adminMovieForm.get('image').invalid" class="invalid-feedback">
+            <div *ngIf="adminMovieForm.get('image').errors.required && adminMovieForm.get('image').invalid"> Required</div>
+          </div> -->
+
+          <label>Picture: </label>   <input type="file" name="" id="" formControlName="image" class="form-control" (change)="onFileChanged($event)">  <!-- added-->
+        
+
+      <br>
+            <input [disabled]="adminMovieForm.invalid" type="button" value="Add" class="btn btn-success" (click)="fnAdd()">&nbsp;
+           
+            <input [disabled]="adminMovieForm.invalid" type="button" value="Modify" class="btn btn-warning" (click)="fnModify()">&nbsp;
+            <input type="button" value="Delete" class="btn btn-danger" (click)="fnDelete()">&nbsp;<br><br>
+
+            <div class="alert alert-primary alert-dismissible" *ngIf=status >
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <strong>Info!</strong> Movie Details are Successfully Updated !!!.
+            </div>
+            
+        </form> <br>
+    
+       <!-- {{ adminMovieForm.value | json}}  <br><br> -->
+      </div>
+      <div class="col-sm-4" ></div>    
+    
+    </div>
+
+    <div class="row">
+    <div class="col-sm-2" ></div>  
+    <div class="col-sm-8" >
+      <table class="table table-bordered-collapse table-striped table-hover ">
+        <thead>
+            <th>ID</th><th>Movie Name</th><th>No of Tickets</th> <th>Theatre</th> <th>Theatre Name</th> <th>Poster</th><th></th>
+        </thead>
+        <tbody>
+           <tr *ngFor="let m of movies ">
+                <td>{{m.movieId}}</td>
+                <td>{{m.movieName}}</td>
+                <td>{{m.noOfTickets}}</td>
+                <td>{{m.theatreId}}</td>   
+                <td>{{m.theatreName}}</td>
+
+                <td><img width="100" [src]="'data:image/png;base64,'+ m.image" alt=""></td>
+                <td><input type="button" value="Edit" class="btn btn-info" style="color: black;" (click)="fnSelect(m)"></td>&nbsp;
+            </tr>
+          </tbody>    
+    </table>
+    </div> 
+    </div>
+
+</div>
+

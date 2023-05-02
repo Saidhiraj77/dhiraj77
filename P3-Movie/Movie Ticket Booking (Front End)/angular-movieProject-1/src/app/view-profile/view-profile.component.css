@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif
+}
+
+body {
+    background-color: #eee
+}
+
+img {
+    height: 150px;
+    width: 150px;
+    border: 8px solid #eee;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%)
+}
+
+.card {
+    position: relative;
+    width: 100%;
+    border-radius: 5px;
+    border: none
+}
+
+.name {
+    font-size: 20px;
+    margin-bottom: 6px;
+    padding-top: 90px;
+    color: white;
+}
+
+.job {
+    /* color: #fa2525; */
+    color: white;
+
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 8px
+}
+
+.container .card .icons .icon {
+    font-size: 14px;
+    width: 30px;
+    height: 30px;
+    color: white;
+    background-color: #fa2525;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer
+}
+
+.dis {
+    color: #7e7c7c;
+    line-height: 2
+}
+
+.container .card:hover .icons .icon {
+    background-color: #f06d6d
+}
+
+.container .card:hover .text-center {
+    background-color: #fa2525;
+    color: white
+}
+
+.container .card:hover .job,
+.container .card:hover .name {
+    color: white
+}
+
+.container .card:hover .dis {
+    color: #c4c4c4
+}
+
+.container .card .icons .icon:hover {
+    background-color: rgb(235, 123, 103)
+}
+
+.mt-80 {
+    margin-top: 80px
+}
+
+
+input[type=text]{
+    background-color: grey;
+    color: black
+  }
+
+  label, i {
+    color: white;
+  }
+
+
+  div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 1000px;
+  }
+  
+  @media screen and (max-width: 700px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    .sidebar a {float: left;}
+    div.content {margin-left: 0;}
+  }
+  
+  @media screen and (max-width: 400px) {
+    .sidebar a {
+      text-align: center;
+      float: none;
+    }
+  }
+  
+  .sidebar {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(255,255,255,0.6);
+    overflow-x: hidden;
+    padding-top: 16px;
+  }
+  
+  .sidebar a {
+    padding: 6px 8px 6px 16px;
+    text-decoration:solid;
+    font-size: 20px;
+    color: black;
+    display: block;
+  }
+  
+  .sidebar a:hover {
+    color: #f1f1f1;
+  }
+  
+  #icons {
+    color:black;
+  
+  }

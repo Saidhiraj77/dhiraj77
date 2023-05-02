@@ -1,0 +1,71 @@
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<div class="sidebar"><br><br><br><br><br><br><br><br>
+  <a [routerLink]="['/home']"> &nbsp;<i class="fa fa-fw fa-home"></i> Home</a>
+  <a [routerLink]="['/movie']"> &nbsp;<i class="fa fa-film"></i> Add Movies</a>
+  <a [routerLink]="['/theatre']"> &nbsp;<i class="fa fa-building-o" ></i> Add Theatres</a>
+  <a [routerLink]="['/manageuser']"><i class="fa fa-fw fa-user"></i> Manage Users</a>
+  <a [routerLink]="['/contactUs']"><i class="fa fa-fw fa-envelope"></i> FAQ'S</a>
+</div>
+<div class="container">
+    <div class="row">
+      
+      <div class="col-md-4"> </div>
+      <div class="col-md-4">
+        <form [formGroup]="adminTheatreForm">
+            <label>Id:</label> <input type="number" name="" id="" placeholder="Enter Theatre Id" formControlName="theatreId" class="form-control" [ngClass]="{'is-invalid': adminTheatreForm.get('theatreId').touched && adminTheatreForm.get('theatreId').invalid}">
+            <div *ngIf="adminTheatreForm.get('theatreId').touched && adminTheatreForm.get('theatreId').invalid" class="invalid-feedback">
+              <div *ngIf="adminTheatreForm.get('theatreId').errors.required">TheatreId  is required</div>
+            </div>
+            
+
+            <label>Theatre Name: </label><input type="text" name="" id="" placeholder="Enter Theatre Name" formControlName="theatreName" class="form-control" [ngClass]="{'is-invalid': adminTheatreForm.get('theatreName').touched && adminTheatreForm.get('theatreName').invalid}"> 
+            <div *ngIf="adminTheatreForm.get('theatreName').touched && adminTheatreForm.get('theatreName').invalid" class="invalid-feedback">
+              <div *ngIf="adminTheatreForm.get('theatreName').errors.required">Theatre Name is required</div>
+            </div> <br>
+
+            <input [disabled]="adminTheatreForm.invalid" type="button" value="Add" class="btn btn-success" (click)="fnAdd()">&nbsp;
+            <input [disabled]="adminTheatreForm.invalid" type="button" value="Modify" class="btn btn-warning" (click)="fnModify()">&nbsp;
+            <input type="button" value="Delete" class="btn btn-danger" (click)="fnDelete()">&nbsp; <br><br>
+
+            <div class="alert alert-primary alert-dismissible" *ngIf=status >
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <strong>Info!</strong> Theatres Details are Successfully Updated !!!.
+            </div>
+
+        </form>
+    
+        <!-- {{ adminTheatreForm.value | json}} <br><br> -->
+      </div>
+      <div class="col-md-4" ></div>    
+    
+    </div><br><br>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-2">
+
+      </div>
+      <div class="col-sm-8">
+        <table class="table table-bordered-collapse table-striped table-hover">
+
+          <thead>
+              <th>Id</th><th>Theatre Name</th><th></th>
+          </thead>
+          <tbody>
+             <tr *ngFor="let t of theatres ">
+                  <td>{{t.theatreId}}</td>
+                  <td>{{t.theatreName}}</td>
+                  <td><input type="button" value="Edit" class="btn btn-info" style="color: black;" (click)="fnSelect(t)"></td>&nbsp;
+                </tr>
+            </tbody>    
+      </table>
+      </div>
+    </div>
+     
+  </div>
+   
+
+</div>

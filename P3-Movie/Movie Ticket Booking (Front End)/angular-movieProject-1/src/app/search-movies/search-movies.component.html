@@ -1,0 +1,30 @@
+<p>search-movies works!  {{movies.movieName}}</p>
+<div class="container">
+    <table class="table table-bordered-collapse table-striped table-hover">
+        <thead style="color: whitesmoke;">
+            <th>ID</th><th>Movie Name</th> <th>Theatre ID</th> <th>Theatre Name</th> <th>Poster</th><th></th>
+        </thead>
+        <tbody style="color: aliceblue;">
+           <tr *ngFor="let movie of movies ">
+                <td>{{movie.movieId}}</td>
+                <td>{{movie.movieName}}</td>
+                <td>{{movie.theatreId}}</td>
+                <td>{{movie.theatreName}}</td>
+
+                <td><img width="100" [src]="'data:image/png;base64,'+ movie.image" alt=""></td>
+                <td><input type="button" value="Book" class="btn btn-info" (click)="fnSearchBook()"> <br>
+            </tr>    
+          </tbody>    
+
+    </table>
+      <!-- <h2 style="color: green; position: center;">{{name}}</h2> -->
+      <div class="alert alert-danger alert-dismissible" *ngIf=status >
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Info!</strong> Please !!! Login into Website to Book the Ticket.... <a [routerLink]="['/login']"> click </a>here for Login.
+      </div>
+</div>
+
+
+
+
+

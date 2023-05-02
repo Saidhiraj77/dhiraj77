@@ -1,0 +1,76 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  </head>
+  <div class="container-fluid">
+      <div class="row">
+        
+        <div class="col-sm-4">
+          <div class="sidebar"><br><br><br><br><br><br><br><br>
+            <a [routerLink]="['/home']">&nbsp;<i class="fa fa-fw fa-home"></i> Home</a>
+            <a [routerLink]="['/theatre']">&nbsp;<i class="fa fa-building-o" ></i> Add Theatres</a>
+            <a [routerLink]="['/movie']">&nbsp;<i class="fa fa-film"></i> Add Movies</a>
+            <a [routerLink]="['/shows']"><i class="fa fa-fw fa-user"></i> Add Shows</a>
+            <a [routerLink]="['/seats']"><i class="fa fa-fw fa-user"></i> Add Seats</a>
+
+            <a [routerLink]="['/manageuser']"><i class="fa fa-fw fa-user"></i> Manage Users</a>
+            <a href="#contact"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <form [formGroup]="adminShowsForm">
+            
+            <label>Show Id:</label>   <input type="number" name="" id="" formControlName="showId" class="form-control">
+            <!-- <label>Show Name:</label>   <input type="text" name="" id="" formControlName="showName" class="form-control"> -->
+            <label>Show Name:</label> <input type="text" name="" id="" formControlName="showName" list="categories" class="form-control">
+            <datalist id="categories">
+                    <option  active value="select...seat type"></option>
+                    <option value="Morning Show">Morning Show</option>
+                    <option value="Matinee Show">Matinee Show</option>
+                    <option value="First Show">First Show</option>
+                    <option value="Second Show">Second Show</option>
+            </datalist> <br>
+            <label>Show Date:</label>   <input type="date" name="" id="" formControlName="showDate" class="form-control">
+            <label>Show Time:</label>   <input type="time" name="" id="" formControlName="showTime" class="form-control">
+            <label>Movie Id:</label>   <input type="number" name="" id="" formControlName="movieId" class="form-control">
+            <label>Theatre Id:</label>   <input type="number" name="" id="" formControlName="theatreId" class="form-control">
+            <label>No of Tickets:</label>   <input type="number" name="" id="" formControlName="noOfTickets" class="form-control">
+             <!--  Picture: <input type="file" name="" id="" formControlName="picture" class="form-control" (change)="fnChange($event)" ><br> -->
+              <input type="button" value="Add" class="btn btn-success" (click)="fnAdd()">&nbsp;
+             
+              <input type="button" value="Modify" class="btn btn-warning" (click)="fnModify()">&nbsp;
+              <input type="button" value="Delete" class="btn btn-danger" (click)="fnDelete()">&nbsp;
+              
+          </form> <br>
+      
+         {{ adminShowsForm.value | json}}  <br><br>
+        </div>
+        <div class="col-sm-4" ></div>    
+      
+      </div>
+  
+      <div class="row">
+      <div class="col-sm-2" ></div>  
+      <div class="col-sm-8" >
+        <table class="table table-bordered-collapse table-striped table-hover">
+          <thead>
+              <th>Show ID</th><th>Show Name</th><th>Show Date</th><th>Show Time</th><th>Theater Id</th> <th>Movie Id</th><th>No of tickets</th>
+          </thead>
+          <tbody>
+             <tr *ngFor="let s of shows ">
+                <td>{{s.showId}}</td>
+                 <td>{{s.showName}}</td>
+                 <td>{{s.showDate}}</td>
+                 <td>{{s.showTime}}</td>
+                 <td>{{s.theatreId}}</td>
+                  <td>{{s.movieId}}</td>
+                  <td>{{s.noOfTickets}}</td>  
+              </tr>
+            </tbody>    
+      </table>
+      </div> 
+      </div>
+    
+     
+  
+  </div>

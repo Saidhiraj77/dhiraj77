@@ -1,0 +1,48 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<div class="row">
+
+  <div class="col-md-2">
+ 
+<div class="sidebar"><br><br><br><br><br><br><br><br>
+  <a [routerLink]="['/viewProfile']"><i id= "icons"class="fa fa-user"aria-hidden="true"></i> View Profile</a>
+  <a [routerLink]="['/homeUser']"><i id= "icons"class="fa fa-fw fa-home"></i> Home</a>
+  <a [routerLink]="['/booking']"><i id = "icons" class="fas fa-ticket-alt"></i> Book Movie</a>
+  <a [routerLink]="['/myBookings']"> <i id= "icons"class="fa fa-history"></i>  Booking History</a>
+  <a [routerLink]="['/faqs']"><i id= "icons" class="fa fa-fw fa-envelope"></i> FAQ'S</a>
+  
+</div> 
+  </div>
+
+<div class="col-md-10">
+  
+<div class="container-fluid">
+
+  <h3 style="color: antiquewhite;">My Booking History</h3> <br> 
+  <table>
+      <thead>
+          <th>Booking Id</th><th>Movie Id</th><th>Movie Name</th><th>Theatre Id</th><th>Theatre Name</th><th>Booking Date</th><th>Tickets</th><th>Seat Type</th>
+      </thead>
+      <tbody>
+         <tr *ngFor="let b of myBookings">
+      
+            <td>{{b.id}}</td>
+            <!-- <td>{{b.customerId}}</td> -->
+            <td>{{b.movieId}}</td>
+            <td>{{b.movieName}}</td>
+            <td>{{b.theatreId}}</td>
+            <td>{{b.theatreName}}</td>
+            <td>{{b.bookDate | date: 'MM-dd-yyyy' }}</td>
+            <td>{{b.tickets}}</td>
+            <td> {{b.seatType}}</td>
+          </tr>
+      </tbody>   
+  </table> <br><br><br>
+  </div>
+  </div>
+
+</div>
+
