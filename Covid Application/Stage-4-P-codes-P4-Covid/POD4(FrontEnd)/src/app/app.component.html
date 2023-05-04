@@ -1,0 +1,28 @@
+<div class="text-center text-white h-100 bg-dark">
+  <div class="container p-3 mx-auto flex-column">
+    <header class="mb-auto" >
+      <div>
+        
+        <h3 class="float-md-start mb-0">Covid Application</h3>
+
+        <h5 class="float-md-end mb-0 ml-4" style="padding-left: 25px;">{{service.getUserName()}}</h5>
+        <nav class="nav nav-masthead justify-content-center float-md-end">
+          <a class="nav-link active" routerLink="/home" routerLinkActive="active" aria-current="page" >Home</a>
+          <a class="nav-link" routerLink="/aboutus" routerLinkActive="active" >About Us</a>
+          <a class="nav-link" routerLink="/login" routerLinkActive="active" *ngIf="!service.getLoggedIn()" >Login</a>
+          <a class="nav-link" routerLink="/home"*ngIf="service.getLoggedIn()" (click)="loggingOut()">LogOut</a>
+        </nav>
+
+      </div>
+    </header>
+    
+    
+    <main >
+      <router-outlet></router-outlet>
+    </main>
+
+    <footer>
+
+    </footer>
+  </div>
+</div>

@@ -1,0 +1,210 @@
+<div class="text-white" style="padding-top: 50px;">
+  <div class="container">
+    <div class="row">
+      <h2 class="text-left text-info">Admin Portal</h2>
+    </div>
+    <div class="row" style="padding-top: 20px;">
+      <div class="col-3">
+        <div>
+        
+          <button class="btn btn-primary align-left col-12" (click)="onBtnClick('user')">Edit/Delete User
+            Details</button>
+          <button class="btn btn-primary align-left col-12" (click)="onBtnClick('vCenters')">Edit/Delete Vaccination
+            Centers</button>
+          <button class="btn btn-primary aligh-left col-12" (click)="onBtnClick('addVCenter')">Add Vaccination
+            Centers</button>
+          
+        </div>
+      </div>
+
+      <div class="col-9" *ngIf="userTable">
+        <h2 class="text-primary">Edit/Delete Registered Users</h2>
+        <table class="table table-dark">
+          <thead class="p-3 mb-2 bg-success text-white">
+            <tr>
+              <td scope="col">S.No</td>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">User Name</th>
+              <th scope="col">Email ID</th>
+              <th scope="col">Gender</th>
+              <th scope="col">Age</th>
+              <th scope="col">Remove</th>
+              <th scope="col">Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let pacuser of sampleData;">
+              <td>{{pacuser.id}}</td>
+              <td>{{pacuser.firstName}}</td>
+              <td>{{pacuser.lastName}}</td>
+              <td>{{pacuser.userName}}</td>
+              <td>{{pacuser.email}}</td>
+              <td>{{pacuser.gender}}</td>
+              <td>{{pacuser.age}}</td>
+              <td><button class="btn btn-danger" (click)="removePacuser(pacuser.id)">Remove</button></td>
+              <td><button class="btn btn-success" (click)="onBtnClick('editUser')">Edit</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-9" *ngIf="vCenters">
+        <h2 class="text-primary">Edit/Delete Vaccination Centers</h2>
+        <table class="table table-dark">
+          <thead class="p-3 mb-2 bg-info text-white">
+            <tr>
+              <td scope="col">Center Id</td>
+              <th scope="col">Center Name</th>
+              <th scope="col">Pincode</th>
+              <th scope="col">Remove</th>
+              <th scope="col">Edit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let vcenters of vCentersData;">
+              <td>{{vcenters.id}}</td>
+              <td>{{vcenters.name}}</td>
+              <td>{{vcenters.pinCode}}</td>
+              <td><button class="btn btn-danger" (click)="removeVcenters(vcenters.id)">Remove</button></td>
+              <td><button class="btn btn-success" (click)="onBtnClick('editVCenter')">Edit </button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="text-white col-9"  *ngIf="addVCenter">
+        <div class="container">
+          <div class="row">
+            <div class="form_bg" style="width:500px;height:380px;">
+              <form #addvcenters="ngForm">
+                <h2 class="text-info">Add Vaccination Centers</h2>
+
+                <div class="form-group p-2">
+                  <label style="float: left;">Center Id:</label>
+                  <input type="number" class="form-control" name="centerid" [(ngModel)]="vcenters.id"
+                    placeholder="Center id" required #id="ngModel"
+                    [class.is-invalid]="id.invalid && id.touched"> 
+                    <small class="text-danger"  [class.d-none]="id.valid || id.untouched">Id is Required</small>
+                </div>
+
+                <div class="form-group p-2">
+                  <label style="float: left;">Center Name:</label>
+                  <input type="text" class="form-control" name="centername" [(ngModel)]="vcenters.name"
+                    placeholder="Center name" required #centername="ngModel"
+                    [class.is-invalid]="centername.invalid && centername.touched"> 
+                    <small class="text-danger"  [class.d-none]="centername.valid || centername.untouched">Center Name is Required</small>
+                </div>
+                <div class="form-group p-2">
+                  <label style="float: left;">Pincode:</label>
+                  <input type="number" class="form-control" name="pincode" [(ngModel)]="vcenters.pinCode"
+                    placeholder="Pincode" required #pincode="ngModel"
+                    [class.is-invalid]="pincode.invalid && pincode.touched"> 
+                    <small class="text-danger"  [class.d-none]="pincode.valid || pincode.untouched">Pincode is Required</small>
+                </div>
+
+                <div class="align-center">
+                  <button class="btn btn-success" (click)="centerspage()" [disabled]="addvcenters.form.invalid">Add Details</button>
+                </div>
+                <div class="align-center" *ngIf="invalidCenter">
+                  <span class="text-danger">Please fill all the detials</span>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-white col-9"  *ngIf="editVCenter">
+        <div class="container">
+          <div class="row">
+            <div class="form_bg" style="width:500px;height:380px;">
+              <form #editvcenters="ngForm">
+                <h2 class="text-info">Modify Vaccination Centers</h2>
+
+                <div class="form-group p-2">
+                  <label style="float: left;">Center Id:</label>
+                  <input type="number" class="form-control" name="centerid" [(ngModel)]="vcenters.id"
+                    placeholder="Center id" required #id="ngModel"
+                    [class.is-invalid]="id.invalid && id.touched"> 
+                    <small class="text-danger"  [class.d-none]="id.valid || id.untouched">Id is Required</small>
+                </div>
+
+                <div class="form-group p-2">
+                  <label style="float: left;">Center Name:</label>
+                  <input type="text"  class="form-control"  name="centername" [(ngModel)]="vcenters.name"
+                placeholder="Center Name" required #centername="ngModel"
+                [class.is-invalid]="centername.invalid && centername.touched"> 
+                <small class="text-danger"  [class.d-none]="centername.valid || centername.untouched">Center Name is Required</small>
+                
+                </div>
+                <div class="form-group p-2">
+                  <label style="float: left;">Pincode:</label>
+                  <input type="number" class="form-control" name="pincode" [(ngModel)]="vcenters.pinCode"
+                    placeholder="Pincode" required #pincode="ngModel"
+                    [class.is-invalid]="pincode.invalid && pincode.touched"> 
+                    <small class="text-danger"  [class.d-none]="pincode.valid || pincode.untouched">Pincode is Required</small>
+                </div>
+
+                <div class="align-center">
+                  <button class="btn btn-success" (click)="editcenterspage()" [disabled]="editvcenters.form.invalid">Modify Details</button>
+                </div>
+                <div class="align-center" *ngIf="invalidCenter">
+                  <span class="text-danger">Please fill all the detials Correctly</span>
+                </div>
+               
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-white col-9"  *ngIf="editUser">
+        <div class="container">
+          <div class="row">
+            <div class="form_bg" style="width:500px;">
+              <form >
+                <h2 class="text-info">Edit/Modify User Details</h2>
+                <div class="form-group p-2" >
+                  <label style="float: left;">ID:</label>
+                  <input type="number" class="form-control" name="id" [(ngModel)]="pacuser.id" placeholder="id" required>
+                </div>
+                <div class="form-group p-2" >
+                  <label style="float: left;">First Name:</label>
+                  <input type="text" class="form-control" name="firstName" [(ngModel)]="pacuser.firstName" placeholder="firstname" required>
+                </div>
+                <div class="form-group p-2" >
+                  <label style="float: left;">Last Name:</label>
+                  <input type="text" class="form-control" name="lastName" [(ngModel)]="pacuser.lastName" placeholder="lastname" required>
+                </div>
+
+                <div class="form-group p-2" >
+                  <label style="float: left;">User Name:</label>
+                  <input type="text" class="form-control" name="username" [(ngModel)]="pacuser.userName" placeholder="User id" required>
+                </div>
+
+                <div class="form-group p-2" >
+                  <label style="float: left;">Age:</label>
+                  <input type="number" class="form-control" name="age" [(ngModel)]="pacuser.age" placeholder="Age" min="15" max="100" required>
+                </div>
+      
+                <div class="form-group p-2">
+                  <label style="float: left;">Email ID:</label>
+                  <input type="email" class="form-control" name="email" [(ngModel)]="pacuser.email" placeholder="Email ID" required>
+                </div>
+                
+                <div class="form-group p-2" >
+                  <label style="float: left;">Gender:</label>
+                  <input type="text" class="form-control" name="gender" [(ngModel)]="pacuser.gender" placeholder="male/female" required>
+                </div>
+                 
+                <div class="align-center">
+                  <button class="btn btn-success" (click)="edituserspage()">Modify Details</button>
+                </div>
+                <div class="align-center" *ngIf="invalidUser">
+                  <span class="text-danger">Please fill Correct Details</span>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

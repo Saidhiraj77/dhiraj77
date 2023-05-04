@@ -1,0 +1,98 @@
+<link rel="stylesheet" href="schedule.component.css">
+<div id="bgimg">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <br>
+                <br>
+            </div>
+
+            <div class="col-md-4" style="padding-right: 40px;">
+                <h1 style="padding-left: 180px;"> Schedule Flights</h1>
+                <hr>
+                <form [formGroup]="scheduleForm">
+                    <label>Id: </label>
+                    <div [ngClass]="{'has-error': f.id.touched && f.id.errors}">
+                        <input type="number" formControlName="id" class="form-control">
+                        <span class="alert-danger" *ngIf="f.id.touched && f.id.errors
+                        required">Id is required</span>
+                    </div>
+                    <label>Flight Id:</label>
+                    <div [ngClass]="{'has-error': f.flight_id.touched && f.flight_id.errors}">
+                        <select formControlName="flight_id" class="form-control">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                        </select>
+                        <span class="alert-danger" *ngIf="f.flight_id.touched && f.flight_id.errors
+                        required">FlightId is required</span>
+                    </div>
+                    <label>Date:</label>
+                    <div [ngClass]="{'has-error': f.sdate.touched && f.sdate.errors}">
+                        <input type="date" formControlName="sdate" class="form-control">
+                        <span class="alert-danger" *ngIf="f.sdate.touched && f.sdate.errors
+                        required">Date is required</span>
+                    </div>
+                    <label>Arrival Time:</label>
+                    <div [ngClass]="{'has-error': f.atime.touched && f.atime.errors}">
+                        <input type="time" formControlName="atime" class="form-control">
+                        <span class="alert-danger" *ngIf="f.atime.touched && f.atime.errors
+                        required">Arrival Time is required</span>
+                    </div>
+                    <label>Departure Time:</label>
+                    <div [ngClass]="{'has-error': f.stime.touched && f.stime.errors}">
+                        <input type="time" formControlName="stime" class="form-control">
+                        <span class="alert-danger" *ngIf="f.stime.touched && f.stime.errors
+                        required">Departure Time is required</span>
+                    </div>
+                    <label>Source</label>
+                    <div [ngClass]="{'has-error': f.source.touched && f.source.errors}">
+                        <input type="text" formControlName="source" class="form-control">
+                        <span class="alert-danger" *ngIf="f.source.touched && f.source.errors
+                        required">Source is required</span>
+                    </div>
+                    <label>Destination</label>
+                    <div [ngClass]="{'has-error': f.destination.touched && f.destination.errors}">
+                        <input type="text" formControlName="destination" class="form-control">
+                        <span class="alert-danger" *ngIf="f.destination.touched && f.destination.errors
+                        required">Destination is required</span>
+                    </div>
+                    <label>Duration</label>
+                    <div [ngClass]="{'has-error': f.duration.touched && f.duration.errors}">
+                        <input type="number" formControlName="duration" class="form-control">
+                        <span class="alert-danger" *ngIf="f.duration.touched && f.duration.errors
+                        required">Duration is required</span>
+                    </div>
+                    <label>Repeat for next:</label>
+                    <div [ngClass]="{'has-error': f.repeat.touched && f.repeat.errors}">
+                        <select class="form-control" formControlName="repeat" (click)="repeat()">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                        </select>
+                        <span class="alert-danger" *ngIf="f.repeat.touched && f.repeat.errors
+                        required">Repeat is required</span>
+                    </div>
+                    <br>
+
+                    <input type="button" value="Add Schedule" class="btn btn-success" (click)="addSchedule()">&nbsp;
+                    <input type="reset" value="Reset" class="btn btn-warning"> &nbsp;
+                    <input type="button" class="btn btn info" value="Repeat this" (click)="repeat()">
+                    <br>
+                    <br>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

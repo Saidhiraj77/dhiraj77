@@ -1,0 +1,16 @@
+#bgimg {
+    background-image: url(../../assets/images/wallpaper2you_55745.jpg);
+    background-size: cover;
+}
+
+label {
+    color: antiquewhite;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+}
+
+h1 {
+    color: antiquewhite;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: xx-large;
+}

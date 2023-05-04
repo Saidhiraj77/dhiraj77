@@ -1,0 +1,46 @@
+<div class="sidebar"><br><br><br><br><br><br><br><br>
+   <a href="#">View Profile</a>
+   <a [routerLink]="['/homeUser']"><i id= "icons"class="fa fa-fw fa-home"></i> Home</a>
+   <a [routerLink]="['/booking']"><i id = "icons" class="fas fa-ticket-alt"></i> Book Movie</a>
+   <a [routerLink]="['/myBookings']"> <i id= "icons"class="fa fa-history"></i>  Booking History</a>
+   <a [routerLink]="['/faqs']"><i id= "icons" class="fa fa-fw fa-envelope"></i> FAQ'S</a>
+   
+ </div> 
+
+<h2 class="text-center" style="margin-left: 80px; color: whitesmoke"> Invoice</h2> <br><br>
+
+<div style="margin-left: 600px;" class="container">
+   <div class="row">
+     <div class="col-md-3">
+      <img width="200" [src]="'data:image/png;base64,'+ bookimage" alt="" ><br>
+
+     </div>
+
+   <div class="col-md-9">
+      <table class=" table-striped table-hover">
+    <br>
+         <tbody>
+          
+            <tr> <th>Booking Id</th> &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{bookingId}} </tr>
+            <tr><th>Show Date</th>&nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{bookDate}}</tr>
+            <!-- <tr> <th>Movie Id:</th>&nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {{book.movieId}}  </tr> -->
+            <tr><th>Movie </th>&nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{bookMovieName}}</tr>
+            <!-- <tr><th>Theatre Id</th> &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{book.theatreId}}  </tr> -->
+            <tr><th>Theatre </th>&nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{bookTheatreName}}</tr>
+  
+            <tr><th>Show Name</th>&nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{showName}}</tr>
+            <tr> <th>Seat Type</th>&nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{book.seatType}} </tr>
+            <!-- <tr> <th>Customer Id:</th>{{book.customerId}}  </tr> -->
+            <tr> <th>Tickets</th>&nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{book.tickets}} </tr>
+            <tr><th>Book Date</th> &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{book.bookDate | date: 'MM-dd-yyyy'}}  </tr>
+
+        </tbody>    
+       </table>
+   </div>
+     
+
+   </div>
+     
+</div> <br><br><br><br>
+
+   <h2 style="margin-left: 550px; color: rgb(38, 197, 46);">  You have successfully Booked the Ticket !!! </h2> <br><br><br><br>

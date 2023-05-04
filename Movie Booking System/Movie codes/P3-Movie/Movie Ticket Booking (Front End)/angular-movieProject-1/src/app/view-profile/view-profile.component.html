@@ -1,0 +1,74 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<div class="sidebar"><br><br><br><br><br><br><br><br>
+    <a [routerLink]="['/viewProfile']"><i id= "icons"class="fa fa-user"aria-hidden="true"></i> View Profile</a>
+    <a [routerLink]="['/homeUser']"><i id= "icons"class="fa fa-fw fa-home"></i> Home</a>
+    <a [routerLink]="['/booking']"><i id = "icons" class="fa fa-book"></i> Book Movie</a>
+    <a [routerLink]="['/myBookings']"> <i id= "icons"class="fa fa-history"></i>  Booking History</a>
+    <a [routerLink]="['/faqs']"><i id= "icons" class="fa fa-fw fa-envelope"></i> FAQ'S</a>
+    
+  </div> 
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-5">
+       
+        </div>
+        <div class="col-md-7" >
+           <div class="col-lg-4 col-md-6 col-sm-6 mt-80">
+               <div class="card bg-transparent d-flex align-items-center justify-content-center ">
+                   <div class="w-100"><img src="https://image.shutterstock.com/image-vector/user-login-authenticate-icon-human-260nw-1365533969.jpg" alt="" class="rounded-circle"></div>
+                   <div class="text-center ">
+                       <p class="name">{{userDetails1.username | titlecase}}</p>
+                       <p class="job">{{userDetails1.email}} </p>
+                       
+                       <p class="dis pb-4">{{userDetails1.gender | titlecase}}<br>{{userDetails1.phone | titlecase}} <br> <input type="button"  style="background-color: rgb(91, 164, 209); color: black; " class="form-control " value="Edit" (click)="fnEdit()"></p>
+
+                   </div>
+               </div>
+           </div>
+       </div>
+    
+       </div>
+
+       <div class="row">
+           <div class="col-md-4">
+
+           </div>
+           <div class="col-sm-5" *ngIf=status>
+            <form [formGroup]="userForm">
+                <label>User Id</label>
+                <input type="text" name="" id="" class="form-control" formControlName="userId">
+                <label>User Name</label>
+                <input type="text" name="" id="" class="form-control" formControlName="username">
+                <label>Email Id</label>
+                <input type="text" name="" id="" class="form-control" formControlName="email">
+                <label>Phone No</label>
+                <input type="text" name="" id="" class="form-control" formControlName="phone">
+                <label>Gender</label>
+                <input type="text" name="" id="" class="form-control" formControlName="gender"><br>
+                <input type="button" value="Update" class="btn btn-success"  data-toggle="modal" data-target="#myModal" (click)="fnModify()">
+                
+             </form><br>
+             <div class="alert alert-success alert-dismissible" *ngIf=statusInfo >
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                 Your Details are  <strong>Successfully Updated</strong>.....!!! Click <a [routerLink]="['/homeUser']">here</a> go back to Home page.
+              </div>
+        </div>
+        <div class="col-md-3">
+
+        </div>
+    </div>
+    <br> <br> <br> <br> 
+</div>
+
+
+
+

@@ -1,0 +1,28 @@
+#bg {
+    background-image: url(https://coolwallpapers.me/th700/2948210-questions-ultimate-question-simple___mixed-wallpapers.jpg);
+    background-repeat: no-repeat;
+    /* background-color: black; */
+    background-size: cover;
+}
+
+#border {
+    border-style: solid;
+    border-color: sky;
+    color: beige;
+}
+
+table {
+    width: 500px;
+    height: 1000px;
+}
+
+h2 {
+    color: skyblue;
+}
+
+p {
+    font-style: italic;
+    font-weight: 600px;
+    color: ghostwhite;
+    font-size: medium;
+}

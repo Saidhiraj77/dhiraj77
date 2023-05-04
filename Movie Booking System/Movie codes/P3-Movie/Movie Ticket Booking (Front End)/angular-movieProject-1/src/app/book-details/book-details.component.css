@@ -1,0 +1,110 @@
+body {
+    margin: 0;
+    font-family: "Lato", sans-serif;
+  }
+  
+  
+  .sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+    position: fixed  ;
+    height: 100%;
+    overflow: auto;
+  }
+  
+  .sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+  }
+   
+  .sidebar a.active {
+    background-color: #04AA6D;
+    color: white;
+  }
+  
+  .sidebar a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+  }
+  
+  div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 1000px;
+  }
+  
+  @media screen and (max-width: 700px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    .sidebar a {float: left;}
+    div.content {margin-left: 0;}
+  }
+  
+  @media screen and (max-width: 400px) {
+    .sidebar a {
+      text-align: center;
+      float: none;
+    }
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    
+  }
+ th{
+   color: whitesmoke;
+ }
+   td {
+    padding: 8px;
+    color: white;
+    text-align: left;
+  }
+
+  .sidebar {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(255,255,255,0.6);
+   
+    overflow-x: hidden;
+    padding-top: 16px;
+  }
+  
+  .sidebar a {
+    padding: 6px 8px 6px 16px;
+    text-decoration:solid;
+    font-size: 20px;
+    color: black;
+    display: block;
+  }
+  
+  .sidebar a:hover {
+    color: #f1f1f1;
+  }
+  thead{
+    background-color: rgb(78, 13, 11);
+    height: 50px;
+  }
+  tr:nth-child(even){
+    background-color: #111;
+  }
+  
+  ::placeholder {
+    color:rgb(80, 76, 76);
+  }
+
+  tr:hover{
+    background-color: rgb(85, 82, 79);
+    ;
+  }

@@ -1,0 +1,64 @@
+<link rel="stylesheet" href="mytrip.component.css">
+
+<div class="container-fluid" style=" background-image: url(https://blog-content.ixigo.com/wp-content/uploads/2020/12/aajkabrandapp.jpeg); background-repeat: no-repeat;  background-size: cover;">
+    <div class="row" style="padding-top: 70px; padding-right: 50px;">
+        <div class="col-md-1"></div>
+        <div class="col-md-10" style="border-style: groove;height: 300px; border-color: black;">
+            <h1>Current Bookings</h1>
+            <hr style="border-color:black ; border-style: dashed;">
+            <table class="table table-bordered ">
+                <thead>
+                    <th>Booking ID</th>
+                    <th>Schedule ID</th>
+                    <th>Class Type</th>
+                    <th>Passengers </th>
+                    <th>Source</th>
+                    <th>Destination</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let f of currentBooking">
+                        <td>{{f.id}}</td>
+                        <td>{{f.schedule_id}}</td>
+                        <td>{{f.classtype}}</td>
+                        <td>{{f.passengers}}</td>
+                        <td>{{source}}</td>
+                        <td>{{destination}}</td>
+                        <th><input type="button" value="Cancel Trip" id="btn" (click)="fnDeleteBooking()"></th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <div class="row" style="padding-top: 70px; padding-right: 50px;">
+        <div class="col-md-2"></div>
+
+
+        <div class="col-md-8" style="border-style:outset; border-color:black; height: 300px;">
+            <h1>Booking History</h1>
+            <hr style="border-color:black ; border-style: dashed;">
+            <table class="table table-bordered ">
+                <thead>
+                    <th>Booking ID</th>
+                    <th>Schedule ID</th>
+                    <th>Class Type</th>
+                    <th>Passengers </th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let h of bookingHistory">
+                        <td>{{h.id}}</td>
+                        <td>{{h.schedule_id}}</td>
+                        <td>{{h.classtype}}</td>
+                        <td>{{h.passengers}}</td>
+
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <br>
+            <br>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>

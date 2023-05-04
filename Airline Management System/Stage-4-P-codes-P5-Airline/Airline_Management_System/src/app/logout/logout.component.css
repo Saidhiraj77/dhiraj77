@@ -1,0 +1,10 @@
+.img-container {
+    text-align: center;
+    display: block;
+}
+
+h1,
+h3 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: italic;
+}

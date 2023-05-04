@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="navigation.component.css">
+
+<nav class="navbar navbar-inverse" style="height: 60px;">
+    <div class="navbar-header">
+        <a class="navbar-brand" [routerLink]="['home']">Airline Management System</a>
+    </div>
+    <ul class="nav navbar-nav">
+        <li class="active"><a [routerLink]="['home']">Home</a></li>
+        <li><a [routerLink]="['/add-flight']" *ngIf="validate!=true && roleBasedDisplay">Add Flight Details</a>
+        </li>
+        <li><a routerLink="/schedule" *ngIf="validate!=true && roleBasedDisplay">Add Schedule</a></li>
+        <li><a [routerLink]="['/search']">Search Flight</a></li>
+        <li><a [routerLink]="['/','booking']">Booking</a></li>
+
+        <li><a [routerLink]="['/mytrips']">My Trips</a></li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">Contact Us <span
+                    class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-header">Email</li>
+                <li><a>AirlineManagementSystem@gmail.com</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Phone Number</li>
+                <li><a>+91-9705076574</a></li>
+            </ul>
+        </li>
+        <li><a [routerLink]="['/faqs']">FAQ'S</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown" *ngIf="validate!=true"><a class="dropdown-toggle" data-toggle="dropdown" style="font-size: large; color: ghostwhite;">{{ UserName |
+                titlecase}} <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><input type="button" value="Edit Profile" style=" display: block;
+                    margin: 10px;
+                    padding: 10px" class="btn btn-info" [routerLink]="['./profile']" (click)="fnChangePassword()"></li>
+
+                <li><input type="button" value="Delete Account" style=" display: block;
+                    margin: 10px;
+                    padding: 10px" class="btn btn-danger" (click)="fnDelete()"></li>
+            </ul>
+        </li>
+        <li><a [routerLink]="['./signup']" *ngIf=validate><span class="glyphicon glyphicon-user"></span> Sign Up </a>
+        </li>
+        <li><a [routerLink]="[status]" style="padding-right: 40px;"><span class="glyphicon glyphicon-log-in"></span>
+                {{status | titlecase}}</a></li>
+    </ul>
+</nav>

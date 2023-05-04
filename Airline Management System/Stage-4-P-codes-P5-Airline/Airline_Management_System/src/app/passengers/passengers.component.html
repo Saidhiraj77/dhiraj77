@@ -1,0 +1,101 @@
+<link rel="stylesheet" href="passengers.component.css">
+<div class="background-wrapper" style="background-image: url(../../assets/images/download.jpg); background-repeat: no-repeat; background-size: cover;">
+
+    <!--header-->
+
+    <div class="container-fluid">
+
+
+        <!--panel-->
+        <div class="col-sm-8 col-sm-offset-2">
+            <div class="panel-group" style="padding-top: 50px;">
+                <div class="panel panel-default panel-transparent">
+                    <div class="panel-heading">
+                        <legend style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif;">
+                            <b>Passenger Information </b>
+                        </legend>
+                    </div>
+                    <div class="panel-body" style="background-image: url(../../assets/images/254367.png); background-repeat: no-repeat; background-size: cover;">
+                        <header>
+                            <h2>Enter Passenger Details:</h2>
+                            <hr>
+                        </header>
+                        <form [formGroup]="passengerForm">
+                            <br>
+                            <div class="input-group">
+                                <label for="class">Salutation</label>
+                                <div [ngClass]="{'has-error': f.salutation.touched && f.salutation.errors}">
+                                    <select class="form-control trans-input-area" formControlName="salutation">
+                                        <option>Mr.</option>
+                                        <option>Mrs.</option>
+                                        <option>Ms.</option>
+                                    </select>
+                                    <span class="alert-danger" *ngIf="f.salutation.touched && f.salutation.errors
+                                required">salutation is required</span>
+                                </div>
+                            </div>
+                            <br>
+                            <div>
+                                <div class="input-group">
+                                    <label>First name</label>
+                                    <div [ngClass]="{'has-error': f.firstName.touched && f.firstName.errors}">
+                                        <input type="text" class="form-control trans-input-area" placeholder="First name" formControlName="firstName" (keyup)="getBookingIdAuto()">
+                                    </div>
+                                    <span class="alert-danger" *ngIf="f.firstName.touched && f.firstName.errors
+                                required">First Name is required</span>
+                                </div>
+                                <br>
+                                <div class="input-group">
+                                    <label>Last name</label>
+                                    <div [ngClass]="{'has-error': f.lastName.touched && f.lastName.errors}">
+                                        <input type="text" class="form-control trans-input-area" placeholder="Last name" formControlName="lastName" (keyup)="getCountOfPassengers()">
+                                    </div>
+                                    <span class="alert-danger" *ngIf="f.lastName.touched && f.lastName.errors
+                                required">Last Name is required</span>
+                                </div>
+                            </div>
+                            <br>
+                            <div>
+                                <div class="input-group">
+                                    <label>Age</label>
+                                    <div [ngClass]="{'has-error': f.age.touched && f.age.errors}">
+                                        <input type="number" class="form-control trans-input-area" placeholder="Enter Age" formControlName="age">
+                                    </div>
+                                    <span class="alert-danger" *ngIf="f.age.touched && f.age.errors
+                                required">Age is required</span>
+                                </div>
+                            </div>
+                            <br>
+                            <div>
+                                <div class="input-group">
+                                    <label>Gender</label><br>
+                                    <div [ngClass]="{'has-error': f.gender.touched && f.gender.errors}">
+                                        <input type="radio" name="gender" value="Male" formControlName="gender" class="from-control"> &nbsp;
+                                        <label>Male</label><br>
+                                        <input type="radio" name="gender" value="Female" formControlName="gender" class="from-control"> &nbsp;
+                                        <label>Female</label><br>
+                                        <input type="radio" name="gender" value="Other" formControlName="gender" class="from-control"> &nbsp;
+                                        <label>Other</label>
+                                    </div>
+                                    <span class="alert-danger" *ngIf="f.gender.touched && f.gender.errors required">gender is
+                                        required</span>
+                                </div>
+
+
+                            </div>
+                            <br>
+                            <br>
+                            <div class="input-group-btn" style="text-align: left !important; ">
+
+                                <input type="button" style="width: 30%;" class="btn btn-success trans-input-area" value="Add Details" [ngClass]="{disabled : booking}" (click)="fnAddPassenger()" />
+
+                            </div>
+                            <div class="input-group-btn" style="text-align: right !important; ">
+
+                                <input type="button" style="width: 30%;" class="btn btn-success trans-input-area" value="Book" [ngClass]="{disabled : enable}" (click)="fnBooked()" />&nbsp;&nbsp;
+                                <input type="reset" style="width: 30%" class="btn btn-warning trans-input-area" value="Reset" />
+                                <br>
+                            </div>
+
+                            <hr>
+                        </form>

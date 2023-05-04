@@ -1,0 +1,294 @@
+<div class="text-white" style="padding-top: 50px;">
+    <div class="container-fluid">
+      <div class="row">
+        <h2 class="text-left">User Portal</h2>
+      </div>
+      <div class="row" style="padding-top: 60px;">
+        <div class="col-3">
+          <div>
+            <button class="btn btn-success align-left col-12" (click)="onBtnClick('profile')">My Profile</button>
+            <button class="btn btn-primary align-left col-12" (click)="onBtnClick('showVCenter')">View Vaccination Centers</button>
+            <button class="btn btn-primary align-left col-12" (click)="onBtnClick('userTable')">My Vaccination Reports</button>
+            <button class="btn btn-primary aligh-left col-12" (click)="onBtnClick('help')">Help</button>
+          </div>
+  
+        </div>
+      <br>
+      <br>
+      
+      <div class="col-9">
+      <div class="container-fluid">
+        
+        <div class="col-lg-12" *ngIf="userTable">
+        <!--<div class="col-lg-12">
+            <h4 class="link"  (click)="getBookingDatabyUsername()">View Report </h4>
+        </div>-->
+        <button class="button" (click)="getBookingDatabyUsername()">View Your Report</button>
+           <br>
+           <br>   
+           
+         <table style="width:100%" >
+            
+          <tr> 
+            <th>Booking Id</th>
+            <td>{{bookData.id}}</td>
+          </tr>
+          <tr> 
+            <th> Slot Date</th>
+            <td>{{bookData.slotDate}}</td>
+          </tr>
+          <tr> 
+            <th> Slot Time</th>
+            <td>{{bookData.slotTime}}</td>
+          </tr>
+          <tr> 
+            <th> User Name</th>
+            <td>{{bookData.userName}}</td>
+          </tr>
+          <tr> 
+            <th> Center Name</th>
+            <td>{{bookData.centerName}}</td>
+          </tr>
+          <tr> 
+            <th> Vaccine Type</th>
+            <td>{{bookData.vtype}}</td>
+          </tr>
+              <!--<tr>
+                <th scope="col">Id</th>
+                <th scope="col">slot date</th>
+                <th scope="col">slot Time</th>
+                <th scope="col">User Name</th>
+                <th scope="col">center Name</th>
+                <th scope="col">Type </th>
+              </tr>
+            
+              
+                 <tr>
+              
+                    <td>{{bookData.id}}</td>
+                    <td>{{bookData.slotDate}}</td>
+                    <td>{{bookData.slotTime}}</td>
+                    <td>{{bookData.userName}}</td>
+                    <td>{{bookData.centerName}}</td>
+                    <td>{{bookData.vtype}} </td>
+                  </tr>-->
+                 
+          </table>   
+          <br>
+          <br>
+         <!-- <div class="col-lg-12">
+            <h4 class="link" (click)="generatePdfbyUserName()">Download</h4>
+            
+          </div>-->
+          <button class="btnn" style="width:100%" (click)="generatePdfbyUserName()"><i class="fa fa-download"></i> Download Your Vaccine Slot Confirmation Report</button>
+        </div>
+      </div>
+      
+        <div class="container-fluid">
+        <div class="col-lg-12" *ngIf="showVCenter">
+  
+          <div class="row" >
+            <div class="col-lg-9 col-sm-12 mt-5">
+              <input type="text" placeholder="Enter pincode" class="form-control" name="pincode" [(ngModel)]="vcenters.pinCode">
+            </div>
+            <div class="col-lg-3 col-sm-12 mt-5">
+              <button type="button" class="btn btn-info" (click)="findVcentersByPinCode()">Search</button>
+            </div>
+          </div>
+          <h2 class="text-primary">Available Vaccination centers</h2>
+          <div class="row col-lg-12 col-sm-12">
+            <table class="p-3 mb-2 bg-secondary text-yellow">
+              <thead class="thead-light">
+                <tr>
+                  <td scope="col">S.No</td>
+                  <th scope="col">Center Name</th>
+                  <th scope="col">Pincode</th>
+                  <th scope="col">Book one</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let vcenters of vCentersData;">
+                 
+                  <td>{{vcenters.id}}</td>
+                  <td>{{vcenters.name}}</td>
+                  <td>{{vcenters.pinCode}}</td>
+                 <td> <button type="button" class="btn btn-warning" (click)="onBtnClick(vcenters.name)">Book Slot</button> </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        </div>
+        <div class="container-fluid">
+        <div class="text-white col-12"  *ngIf="bookSlot">
+          
+            <div class="row">
+              <div class="form_bg" style="width:500px;height:380px;">
+                <form #booking="ngForm">
+                  <h2 class="text-info">Vaccination Slot Booking</h2>
+                  <div class="form-group p-2">
+                    <label style="float: left;">Select Date:</label>
+                    <input type="date" class="form-control" name="date" [(ngModel)]="slots.slotDate" placeholder="Date" required #date="ngModel"
+                    [class.is-invalid]="date.invalid && date.touched">
+                    <span class="text-danger" [class.d-none]="date.valid || date.untouched">Slot Date is Required</span>
+                  </div>
+                  <div class="form-group p-2">
+                    <label style="float: left;">Select Time(Slot):</label>
+                    
+                    <select style="width:330px;height:35px;" name="Time" id="time" [(ngModel)]="slots.slotTime"  required #time="ngModel" 
+                    [class.is-invalid]="time.invalid && time.touched">
+                      
+                      <option value="09:00 AM">09:00 AM</option>
+                      <option value="10:00 AM">10:00 AM</option>
+                      <option value="11:00 AM">11:00 AM</option>
+                      <option value="12:00 PM">12:00 PM</option>
+                      <option value="02:00 PM">02:00 PM</option>
+                      <option value="03:00 PM">03:00 PM</option>
+                      <option value="04:00 PM">04:00 PM</option>
+                      <option value="05:00 PM">05:00 PM</option>
+                    </select>
+                    <span class="text-danger" [class.d-none]="time.valid || time.untouched">Time is Required</span>
+                  </div>
+  
+                  <div class="form-group p-2">
+                    <label style="float: left;">Vaccine type(Preferred):</label>
+                    
+                    <select style="width:285px;height:35px;" name="vType1" id="vType2" [(ngModel)]="slots.vtype" required #vtype="ngModel"
+                    [class.is-invalid]="vtype.invalid && vtype.touched">
+                      
+                      <option value="covaxin">covaxin</option>
+                      <option value="covi-sheild">covi-sheild</option>
+                    </select>
+                  
+                    <span class="text-danger" [class.d-none]="vtype.valid || vtype.untouched">Vaccine Type is Required</span>
+                  </div>  
+                  
+                 <!--<div class="form-group p-2">
+                    <label style="float: left;">Vaccine Dose(Preferred):</label>
+                    <select name="dose1" id="dose2" [(ngModel)]="slots.dose" required #dose="ngModel"
+                    [class.is-invalid]="dose.invalid && dose.touched">
+                      <option value="select">select </option>
+                      <option value="dose1">dose 1</option>
+                      <option value="dose2">dose 2</option>
+                    </select>
+                    <span class="text-danger" [class.d-none]="dose.valid || dose.untouched">Dose is required</span>
+                  </div>  --> 
+  
+  
+                  <div class="form-group p-2">
+                    <label style="float: left;">Enter Aadhar number:</label>
+                    <input type="text" class="form-control" name="adhar"  [(ngModel)]="slots.aadharNumber" minlength="12" maxlength="12" placeholder="Aadhar number" required #adhar="ngModel"
+                    [class.is-invalid]="adhar.invalid && adhar.touched">
+                    <div *ngIf="(adhar.errors && (adhar.touched && adhar.invalid ))"> 
+                      <span class="text-danger" *ngIf="adhar.errors.required">Aadhar Number is Required</span>
+                     <span class="text-danger" *ngIf="adhar.errors.minlength || adhar.errors.maxlength">Aadhar Number should contain 12 digits</span>
+                    </div>
+                    
+                  </div>
+                  <div class="align-center">
+                    <button class="btn btn-success" (click)="confirmSlot()" [disabled]="booking.form.invalid">Proceed with Booking</button>
+                  </div>
+                  <span>
+                  <p class="text-warning">Note: Booking once confirmed, Cannot be changed. For Support, go to Help.</p>
+                </span>
+                </form>
+              </div>
+            </div>
+          </div>       
+        </div>
+        <div class="container-fluid">
+        <div class="col-lg-12" *ngIf="profile">
+          <div class="row col-lg-12 col-sm-12">
+            <div class="col-lg-12 ">
+              <!--<button type="button" class="btn btn-warning" (click)="getUserDatabyId()">View Profile</button>-->
+              
+              <button (click)="getUserDatabyId()" class="buttonnik button3">View Your Profile</button>
+            </div>
+            <br>
+           <br>
+           <br>
+           
+           
+           
+           
+            <table class="table table-dark">
+              <thead class="p-3 mb-2 bg-info text-white">
+  
+                <tr>
+                  <th scope="col">First Name</th>
+                  <td>{{userData.firstName}}</td>
+                </tr>
+                <tr>
+                  <th scope="col">Last Name</th>
+                  <td>{{userData.lastName}}</td>
+                </tr>
+                <tr>
+                  <th scope="col">User Name</th>
+                  <td>{{userData.userName}}</td>
+                </tr>
+                <tr>
+                  <th scope="col">Email ID</th>
+                  <td>{{userData.email}}</td>
+                </tr>
+                <tr>
+                  <th scope="col">Gender</th>
+                  <td>{{userData.gender}}</td>
+                </tr>
+                <tr>
+                  <th scope="col">Age</th>
+                  <td>{{userData.age}}</td>
+                </tr>
+              </thead>
+  
+            </table>
+          </div>
+        </div>
+        <div class="container-fluid">
+        <div class="col-lg-12" *ngIf="help">
+          <div class="row col-lg-12 col-sm-12">
+  
+            <h1 style="color: cyan;">Need Help?</h1>
+            <p style="color:white;"  class="text-secondary mt-5 text-left" ><b>Need something informative or want to have chat regarding queries?</b>
+            </p>
+            <div class="row mt-2 mb-2">
+            
+              <div class="col-lg-6 ">
+                <p style="color: khaki;"  class="text-secondary" ><b>Getting in touch is easy!</b></p>
+                <h2 style="color: khaki;">Follow us on Instagram</h2>
+                <ul class="mt-3">
+                  <li>Vaccination Surveys</li>
+                  <li>No issues in Slots Availability</li>
+                  <li>Updates</li>
+                  <li>Vaccinate now</li>
+                </ul>
+                <p class="mt-4"><b>username</b> - PACVaccination
+                  <br><a href="https://www.instagram.com/PACVaccination/">www.instagram.com/PACVaccination</a>
+                </p>
+  
+              </div>
+  
+              <div class="col-lg-6 ">
+                <p style="color: khaki;"  class="text-secondary" ><b>Booking Procedure</b></p>
+                <h2 style="color: khaki;">Follow the steps mentioned</h2>
+                <ul class="mt-3">
+                  <li>Search centers by pincode</li>
+                  <li>Book slot in selected center</li>
+                  <li>Fill all the required fields</li>
+                  <li>Proceed with booking</li>
+                </ul>
+                <p class="mt-4"><b>PACVaccination</b> 
+                  <br><a href="https://www.instagram.com/PACVaccination/">Click here for Customer Support</a>
+                </p>
+              </div>
+              </div>
+            
+  
+  
+  
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>

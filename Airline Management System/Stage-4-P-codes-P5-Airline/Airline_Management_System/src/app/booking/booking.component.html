@@ -1,0 +1,94 @@
+<link rel="stylesheet" href="booking.component.css">
+
+<div class="background-wrapper" style="background-image: url(../../assets/images/download.jpg); background-repeat: no-repeat; background-size: cover;">
+
+
+    <div class="container-fluid">
+
+        <div class="col-sm-8 col-sm-offset-2">
+            <div class="panel-group" style="padding-top: 50px;">
+                <div class="panel panel-default panel-transparent">
+                    <div class="panel-heading">
+                        <legend style="text-align: center;">
+                            <p style="color: black; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: xx-large; padding-top: 20px;">
+                                Flight Information
+                            </p>
+                        </legend>
+                    </div>
+                    <div class="panel-body" style="background-image: url(../../assets/images/254367.png);background-size: cover; background-repeat: no-repeat;  ">
+                        <form class="form-inline" [formGroup]="bookingForm">
+                            <div class="input-group">
+                                <label for="flightId">Flight Id</label>
+                                <div [ngClass]="{'has-error': f.flight_id.touched && f.flight_id.errors}">
+                                    <input type="text" class="form-control trans-input-area" placeholder="Flight Id" formControlName="flight_id">
+                                    <span class="alert-danger" *ngIf="f.flight_id.touched && f.flight_id.errors
+                        required">flight_id is required</span>
+                                </div>
+                            </div><br>
+                            <div class="input-group">
+                                <label for="class">Class</label>
+                                <div [ngClass]="{'has-error': f.class.touched && f.class.errors}">
+                                    <select class="form-control trans-input-area" formControlName="class">
+                                        <option>Economy</option>
+                                        <option>Business</option>
+                                        <option>First Class</option>
+                                    </select>
+                                    <span class="alert-danger" *ngIf="f.class.touched && f.class.errors
+                        required">class is required</span>
+                                </div>
+                            </div>
+                            <br>
+                            <div>
+                                <div class="input-group">
+                                    <label for="from">From</label>
+                                    <div [ngClass]="{'has-error': f.source.touched && f.source.errors}">
+                                        <input type="text" class="form-control trans-input-area" placeholder="Origin" formControlName="source">
+                                        <span class="alert-danger" *ngIf="f.source.touched && f.source.errors
+                        required">source is required</span>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="to">To</label>
+                                    <div [ngClass]="{'has-error': f.destination.touched && f.destination.errors}">
+                                        <input type="text" class="form-control trans-input-area" placeholder="Destination" formControlName="destination">
+                                        <span class="alert-danger" *ngIf="f.destination.touched && f.destination.errors
+                        required">destination is required</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div>
+                                <div class="input-group">
+                                    <label for="Departure">Departure Date</label>
+                                    <div [ngClass]="{'has-error': f.sdate.touched && f.sdate.errors}">
+                                        <input type="text" class="form-control trans-input-area" min="2015-01-01" value="date" formControlName="sdate">
+                                        <span class="alert-danger" *ngIf="f.sdate.touched && f.sdate.errors
+                        required">sdate is required</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <br>
+                            <div>
+                                <div class="input-group">
+                                    <label for="Passenger">No Of Passengers</label>
+                                    <div [ngClass]="{'has-error': f.count.touched && f.count.errors}">
+                                        <input type="number" required="" class="form-control trans-input-area" formControlName="count">
+                                        <span class="alert-danger" *ngIf="f.count.touched && f.count.errors
+                                        required">No of Passengers is required</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="input-group-btn" style="text-align: right !important; ">
+                                <input type="button" style="width: 30%" class="btn btn-primary trans-input-area" value="Continue" (click)="fnBooking()" />
+                                <br>
+                            </div>
+                            <hr>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

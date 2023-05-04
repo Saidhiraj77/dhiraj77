@@ -1,0 +1,50 @@
+<div class="container-fluid" style="background-color: skyblue;">
+    <div class="row" style="padding-top: 20px; padding-bottom: 60px;">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <div class="box-shadow">
+
+                <body style="background-image: url(../../assets/images/image3.jfif); background-repeat: no-repeat; background-size: cover;">
+                    <h3 style="text-align:center; color: ghostwhite; padding-top:25px ; ">Profile</h3>
+                    <hr>
+                    <form [formGroup]="profileForm" class="container-fluid">
+                        <br>
+                        <label>User ID</label>
+                        <input type="text" name="userid" formControlName="id" class="form-control">
+
+                        <label>User Name:</label>
+                        <input type="text" required formControlName="username" class="form-control">
+
+                        <label>Password:</label>
+                        <input type="text" formControlName="password" class="form-control">
+
+                        <label>Email: </label>
+                        <input type="email" formControlName="email" class="form-control">
+
+                        <label>Phone Number:</label>
+                        <input type="text" formControlName="pnumber" class="form-control">
+
+                        <label>Gender:</label> &nbsp;
+                        <input type="radio" name="gender" value="Male" formControlName="gender" class="from-control"> &nbsp;
+                        <label>Male</label>&nbsp;
+                        <input type="radio" name="gender" value="Female" formControlName="gender" class="from-control">&nbsp; <label>Female</label>&nbsp;
+                        <input type="radio" name="gender" value="Other" formControlName="gender" class="from-control"> &nbsp;
+                        <label>Other</label><br>
+                        <br><br>
+                        <input type="button" value="Edit Profile" style="width: 40%;" class="btn btn-success" (click)="fnEditProfile()">&nbsp;
+                        <input type="reset" value="Reset" style="width: 40%; float: right;" class="btn btn-warning">
+                    </form>
+                    <br>
+                    <br>
+                </body>
+            </div>
+        </div>
+        <div class="col-md-6" style="padding-left: 90px; padding-top: 100px;">
+            <h1>Note:</h1>
+            <h3> " You Cannot change the User ID "</h3>
+            <br>
+            <br>
+            <h3 *ngIf=valid> " Your details have been successfully updated !! "</h3>
+        </div>
+    </div>
+</div>

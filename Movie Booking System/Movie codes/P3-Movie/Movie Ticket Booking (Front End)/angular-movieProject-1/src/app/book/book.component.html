@@ -1,0 +1,104 @@
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<div class="sidebar"><br><br><br><br><br><br><br><br>
+   <a [routerLink]="['/viewProfile']"><i id= "icons"class="fa fa-user"aria-hidden="true"></i> View Profile</a>
+   <a [routerLink]="['/homeUser']"><i id= "icons"class="fa fa-fw fa-home"></i> Home</a>
+   <a [routerLink]="['/booking']"><i id = "icons" class="fas fa-ticket-alt"></i> Book Movie</a>
+   <a [routerLink]="['/myBookings']"> <i id= "icons"class="fa fa-history"></i>  Booking History</a>
+   <a [routerLink]="['/faqs']"><i id= "icons" class="fa fa-fw fa-envelope"></i> FAQ'S</a>
+ </div> 
+
+
+<div class="container">
+   <div class="row">
+       <div class="col-md-1" >
+
+       </div>
+      <div class="col-md-7">
+         <h4 style="color: antiquewhite;">Featured Movies</h4> <br>
+
+         <div class="card" style="width: 385px; color:aliceblue; background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.75));" *ngFor="let mov of movies">
+            <div class="row no-gutters">
+               <div class="col-sm-5">
+                  <img width="130" [src]="'data:image/png;base64,'+ mov.image" alt="Movie Poster">
+               </div>
+               <div class="col-sm-7">
+                  <div class="card-body">
+                     <h5 class="card-title">{{ mov.movieName | titlecase}}</h5>
+                     <p class="card-text"> TheatreId: {{ mov.theatreId }}  </p>
+                     <p class="card-text"> TheatreName: {{ mov.theatreName }}  </p>
+                     <input type="button" value="Book Now" class="btn btn-primary stretched-link" (click)="fnBook(mov)">
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="col-md-4"  > <br><br>
+         <form class="container-flex" [formGroup]="movieForm" *ngIf=statusBook >
+            <label>Movie Id:</label>  <input type="text" name="" id="" class="form-control" formControlName="movieId">
+            <label>Movie Name: </label>  <input type="text" name="" id="" class="form-control" formControlName="movieName">
+            <label>Theatre Name:</label>  <input type="text" name="" id="" class="form-control" formControlName="theatreName">
+            <label>Show Date:</label> <br>
+            <select name="bookDate" id="bookdate" formControlName="bookDate" class="form-control" style="background-color: #f8f0f09a; color: black;" [ngClass]="{'is-invalid': movieForm.get('bookDate').touched && movieForm.get('bookDate').invalid}">
+               <option value="Choose Role..">Choose Date..</option>
+               <option value="10-08-2021">10-08-2021</option>
+               <option value="11-08-2021">11-08-2021</option>
+               <option value="12-08-2021">12-08-2021</option>
+           </select>
+           <div *ngIf="movieForm.get('bookDate').touched && movieForm.get('bookDate').invalid" class="invalid-feedback">
+            <div *ngIf="movieForm.get('bookDate').errors.required && movieForm.get('bookDate').invalid"> Required</div>
+          </div>
+           <br>
+           
+            <div class="mb-3 form-radio">
+               <label class="form-label" >Show Name</label> &nbsp; <br>
+               &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="radio"  formControlName="showName" value="Morning Show (11:00AM)" [ngClass]="{'is-invalid': movieForm.get('showName').touched && movieForm.get('showName').invalid}"/> &nbsp;
+               <label class="form-radio-label" for="exampleCheck1">Morning Show  &nbsp; (11:00AM)</label>&nbsp; <br>
+
+               &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="radio"  formControlName="showName" value="Matinee Show (02:00PM)" [ngClass]="{'is-invalid': movieForm.get('showName').touched && movieForm.get('showName').invalid}"/> &nbsp;
+               <label class="form-radio-label" for="exampleCheck1">Matinee Show &nbsp;(02:00PM)</label>&nbsp;<br>
+
+               &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="radio"  formControlName="showName" value="First Show (06:00PM)" [ngClass]="{'is-invalid': movieForm.get('showName').touched && movieForm.get('showName').invalid}"/> &nbsp;
+               <label class="form-radio-label" for="exampleCheck1">First Show &nbsp;(06:00PM)</label>&nbsp;<br>
+
+               &nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="radio"  formControlName="showName" value="Second Show (09:00PM)" [ngClass]="{'is-invalid': movieForm.get('showName').touched && movieForm.get('showName').invalid}"/> &nbsp;
+               <label class="form-radio-label" for="exampleCheck1">Second Show &nbsp;(09:00PM)</label>&nbsp;
+             </div> 
+             <div *ngIf="movieForm.get('showName').touched && movieForm.get('showName').invalid" class="invalid-feedback">
+               <div *ngIf="movieForm.get('showName').errors.required && movieForm.get('showName').invalid"> Required</div>
+             </div>
+             <br>
+           
+            <label> Seat Types:</label> <input type="text" name="" id="" formControlName="category" placeholder="Select Seat type..." list="categories" class="form-control" [ngClass]="{'is-invalid': movieForm.get('category').touched && movieForm.get('category').invalid}">
+            <datalist id="categories">
+               <!-- <option  active value="select...seat type"></option> -->
+               <option value="Silver">silver  Rs.150/-</option>
+               <option value="Gold">gold  Rs.300/-</option>
+               <option value="Premium">premium  Rs.500/-</option>
+           </datalist> 
+           <div *ngIf="movieForm.get('category').touched && movieForm.get('category').invalid" class="invalid-feedback">
+            <div *ngIf="movieForm.get('category').errors.required && movieForm.get('category').invalid"> Required</div>
+          </div>
+           <br>
+
+           <i> Available Tickets: </i> <i> {{DisplayTickets}} </i><br><br>
+
+            <label>Enter No Of Tickets:</label> <input type="text" name="" id="" placeholder="Enter Number Tickets" class="form-control" formControlName="tickets" [ngClass]="{'is-invalid': movieForm.get('tickets').touched && movieForm.get('tickets').invalid}"> 
+            <div *ngIf="movieForm.get('tickets').touched && movieForm.get('tickets').invalid" class="invalid-feedback">
+               <div *ngIf="movieForm.get('tickets').errors.required && movieForm.get('tickets').invalid">Number Of Tickets is required</div>
+               <div *ngIf="movieForm.get('tickets').errors.min && movieForm.get('tickets').invalid">Number of Tickets Must be > 0 </div>
+             </div> <br>
+
+            <input [disabled]="movieForm.invalid" type="button" value="BookTicket" class="btn btn-success"  (click)="fnAdd()" >&nbsp;
+            <Button type="reset" value="Cancel" class="btn btn-danger" (click)="fnDelete()"> Cancel </Button>     
+          </form> <br>
+      </div>
+   </div>
+ <div>
+ </div>
+</div> <br><br><br><br>
+
+

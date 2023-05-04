@@ -1,0 +1,92 @@
+<link rel="stylesheet" href="admin-add-flight.component.css">
+<div class="container-fluid" id="bgimg">
+    <div class="row">
+        <div class="col-md-4">
+            <form [formGroup]="addFlightForm" class="fluid-control" style="padding-left: 20px;">
+                <h3 class="text-center">Update Flight</h3>
+                <label>Flight Id:</label>
+                <div [ngClass]="{'has-error': f.id.touched && f.id.errors}">
+                    <input type="number" class="form-control" formControlName="id">
+                    <span class="alert-danger" *ngIf="f.id.touched && f.id.errors
+                        required">Id is required</span>
+                </div>
+                <label>Flight Number: </label>
+                <div [ngClass]="{'has-error': f.flightNumber.touched && f.flightNumber.errors}">
+                    <input type="text" class="form-control" formControlName="flightNumber">
+                    <span class="alert-danger" *ngIf="f.flightNumber.touched && f.flightNumber.errors
+                        required">FlightNumber is required</span>
+                </div>
+                <label>Flight Name: </label>
+                <div [ngClass]="{'has-error': f.flightName.touched && f.flightName.errors}">
+                    <input type="text" class="form-control" formControlName="flightName">
+                    <span class="alert-danger" *ngIf="f.flightName.touched && f.flightName.errors
+                        required">FlightName is required</span>
+                </div>
+                <label>Flight Model:</label>
+                <div [ngClass]="{'has-error': f.model.touched && f.model.errors}">
+                    <input type="text" class="form-control" formControlName="model">
+                    <span class="alert-danger" *ngIf="f.model.touched && f.model.errors
+                        required">Flight Model is required</span>
+                </div>
+                <label>Flight Type:</label>
+                <div [ngClass]="{'has-error': f.type.touched && f.type.errors}">
+                    <input type="text" class="form-control" formControlName="type">
+                    <span class="alert-danger" *ngIf="f.type.touched && f.type.errors
+                        required">Flight Type is required</span>
+                </div>
+                <label>Economy Seats:</label>
+                <div [ngClass]="{'has-error': f.economySeats.touched && f.economySeats.errors}">
+                    <input type="number" class="form-control" formControlName="economySeats">
+                    <span class="alert-danger" *ngIf="f.economySeats.touched && f.economySeats.errors
+                        required">Economy Seat is required</span>
+                </div>
+                <label>Business Seats:</label>
+                <div [ngClass]="{'has-error': f.businessSeats.touched && f.businessSeats.errors}">
+                    <input type="number" class="form-control" formControlName="businessSeats">
+                    <span class="alert-danger" *ngIf="f.businessSeats.touched && f.businessSeats.errors
+                        required">Business Seat is required</span>
+                </div>
+                <label>First Class Seats:</label>
+                <div [ngClass]="{'has-error': f.firstClassSeats.touched && f.firstClassSeats.errors}">
+                    <input type="number" class="form-control" formControlName="firstClassSeats">
+                    <span class="alert-danger" *ngIf="f.firstClassSeats.touched && f.firstClassSeats.errors
+                        required">First Class Seat is required</span>
+                </div>
+                <br>
+                <input type="submit" value="Add" class="btn btn-success" (click)="fnAddFlight()">&nbsp; &nbsp; &nbsp;
+                <input type="reset" value="Modify" class="btn btn-warning" (click)="fnModifyFlight()">&nbsp; &nbsp; &nbsp;
+                <input type="reset" value="Delete" class="btn btn-danger" (click)="fnDeleteFlight()">
+                <br><br>
+            </form>
+        </div>
+        <div class="col-md-8" style="padding-right: 40px;">
+            <h3 class="text-center" style="padding-top: 20px; padding-bottom: 20px;"> Flight Details</h3>
+            <table class="table table-striped table-hover table-bordered">
+                <thead>
+                    <th>Flight Id</th>
+                    <th>Flight Number</th>
+                    <th>Flight Name</th>
+                    <th>Flight Model</th>
+                    <th>Flight Type</th>
+                    <th>Economy Seats</th>
+                    <th>Business Seats</th>
+                    <th> First Class Seats</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let f of flightDetail">
+                        <th>{{f.id}}</th>
+                        <td>{{f.flightNumber}}</td>
+                        <td>{{f.flightName}}</td>
+                        <td>{{f.model}}</td>
+                        <td>{{f.type}}</td>
+                        <td>{{f.economySeats}}</td>
+                        <td>{{f.businessSeats}}</td>
+                        <td>{{f.firstClassSeats}}</td>
+                        <td><input type="button" class="btn btn-info" value="Select" (click)="fnSelectById(f.id)"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

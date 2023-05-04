@@ -1,0 +1,65 @@
+.btn{
+  margin: 5px;
+  float: center;
+}
+table, th, td {
+  border: 3px solid white;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 3px;
+  text-align: left;
+}
+.link {
+  color:rgb(253, 143, 16);
+  text-decoration:underline;
+  cursor:pointer;
+}
+.btnn {
+  background-color: DodgerBlue;
+  border: none;
+  color: white;
+  padding: 9px 20px;
+  cursor: pointer;
+  font-size: 20px;
+}
+.btnn:hover {
+  background-color: RoyalBlue;
+}
+
+.button {
+  display: inline-block;
+  padding: 15px 30px;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+.buttonnik {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 5px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button3 {width: 100%;}

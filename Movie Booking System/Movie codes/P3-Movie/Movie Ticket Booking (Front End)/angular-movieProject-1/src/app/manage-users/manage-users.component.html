@@ -1,0 +1,104 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  </head>
+  <div class="container-fluid">
+      <div class="row">
+        
+        <div class="col-sm-4">
+          <div class="sidebar"><br><br><br><br><br><br><br><br>
+            <a [routerLink]="['/home']">&nbsp;<i class="fa fa-fw fa-home"></i> Home</a>
+            <a [routerLink]="['/movie']">&nbsp;<i class="fa fa-film"></i> Add Movies</a>
+            <a [routerLink]="['/theatre']">&nbsp;<i class="fa fa-building-o" ></i> Add Theatres</a>
+            <a [routerLink]="['/manageuser']"><i class="fa fa-fw fa-user"></i> Manage Users</a>
+            <a [routerLink]="['/contactUs']"><i class="fa fa-fw fa-envelope"></i> FAQ'S</a>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <form [formGroup]="signupForm">
+            
+            <label>User Id:</label>   <input type="number" name="" id="" placeholder="Enter UserId" formControlName="userId" class="form-control">
+           
+            <label>User Name:</label>   <input type="text" name="" id="" placeholder="Enter UserName" formControlName="username" class="form-control"  [ngClass]="{'is-invalid': signupForm.get('username').touched && signupForm.get('username').invalid}" >
+            <div *ngIf="signupForm.get('username').touched && signupForm.get('username').invalid" class="invalid-feedback">
+              <div *ngIf="signupForm.get('username').errors.required">UserName is required</div>
+              <div *ngIf="signupForm.get('username').errors.minlength">Min Length 5 </div>
+              <div *ngIf="signupForm.get('username').errors.maxlength">Max Length 10 </div>
+            </div>
+
+            <label>Password:</label>   <input type="text" name="" id="" placeholder="Password" formControlName="password" class="form-control"  [ngClass]="{'is-invalid': signupForm.get('password').touched && signupForm.get('password').invalid}" >
+            <div *ngIf="signupForm.get('password').touched && signupForm.get('password').invalid" class="invalid-feedback">
+              <div *ngIf="signupForm.get('password').errors.required">Password is required</div>
+              <div *ngIf="signupForm.get('password').errors.minlength">Min Length 6 </div>
+              <div *ngIf="signupForm.get('password').errors.maxlength">Max Length 10 </div>
+            </div>
+
+            <label for="role" >Role:</label>  
+              <select name="role" id="role" formControlName="role" class="form-control" style="background-color: grey; color: black;"  [ngClass]="{'is-invalid': signupForm.get('role').touched && signupForm.get('role').invalid}" >
+                  <option value="">Choose Role..</option>
+                  <option value="admin">Admin</option>
+                  <option value="user">User</option>
+              </select> 
+              <div *ngIf="signupForm.get('role').touched && signupForm.get('role').invalid" class="invalid-feedback">
+                <div *ngIf="signupForm.get('role').errors.required">Role is required</div>
+              </div> <br>
+
+              <label class="form-label"  >Gender</label> &nbsp;
+              <input type="radio" name="gender" value="male" class="form-radio-input" id="exampleCheck1"  formControlName="gender"  [ngClass]="{'is-invalid': signupForm.get('gender').touched && signupForm.get('gender').invalid}" >
+              <label class="form-radio-label" for="exampleCheck1">&nbsp;  Male</label>&nbsp;
+              <input type="radio" name="gender"  value="female" class="form-radio-input" id="exampleCheck1"  formControlName="gender"  [ngClass]="{'is-invalid': signupForm.get('gender').touched && signupForm.get('gender').invalid}" >
+              <label class="form-radio-label" for="exampleCheck1"> &nbsp; Female</label> <br>
+
+              <label for="email" class="form-label">Email Id</label>
+              <input type="text" id="email" class="form-control" placeholder="Enter Your Email Address" formControlName="email"  [ngClass]="{'is-invalid': signupForm.get('email').touched && signupForm.get('email').invalid}" />
+              <div *ngIf="signupForm.get('email').touched && signupForm.get('email').invalid" class="invalid-feedback">
+                <div *ngIf="signupForm.get('email').errors.required">Email is required</div>
+                <div *ngIf="signupForm.get('email').errors.email">Email is must be valid email address</div>
+              </div>
+
+              <label for="phone" class="form-label">Phone No</label>
+              <input type="number" class="form-control" placeholder="Enter Phone number" id="phone" formControlName="phone"  [ngClass]="{'is-invalid': signupForm.get('phone').touched && signupForm.get('phone').invalid}"  />
+               <div *ngIf="signupForm.get('phone').touched && signupForm.get('phone').invalid" class="invalid-feedback">
+               <div *ngIf="signupForm.get('phone').errors.required"> Phone number is required</div>
+               <div *ngIf="signupForm.get('phone').errors.pattern">Enter Valid Phone number</div>
+             </div><br>
+             <div class="alert alert-primary alert-dismissible" *ngIf=status >
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <strong>Info!</strong> Details are Successfully Updated !!!.
+            </div> <br>
+
+              <input [disabled]="signupForm.invalid" type="button" value="Add" class="btn btn-success" (click)="fnAdd()">&nbsp;
+              <input type="button" value="Modify" class="btn btn-warning" (click)="fnModify()">&nbsp;
+              <input type="button" value="Delete" class="btn btn-danger" (click)="fnDelete()">&nbsp;
+              
+          </form> <br>
+      
+         <!-- {{ userForm.value | json}}  <br><br> -->
+        </div>
+        <div class="col-sm-4" ></div>    
+      
+      </div> <br>
+  
+      <div class="row">
+      <div class="col-sm-2" ></div>  
+      <div class="col-sm-8" >
+        <table class="table table-bordered-collapse table-striped table-hover">
+          <thead>
+              <th>User Id</th><th>User Name</th><th>Gender</th><th>Email</th> <th>Phone</th><th>Role</th><th></th>
+          </thead>
+          <tbody>
+             <tr *ngFor="let u of userDetails ">
+                  <td>{{u.userId}}</td>
+                  <td>{{u.username}}</td>
+                  <td>{{u.gender}}</td>
+                  <td>{{u.email}}</td>
+                  <td>{{u.phone}}</td>
+                  <td>{{u.role}}</td>
+                  <td><input type="button" value="Edit" class="btn btn-info" style="color: black;" (click)="fnSelect(u)"></td>&nbsp;
+                </tr>
+            </tbody>    
+      </table>
+      </div> 
+      </div>
+  </div>
+  

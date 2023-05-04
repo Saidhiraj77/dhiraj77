@@ -1,0 +1,70 @@
+<link rel="stylesheet" href="search-flight.component.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="container-fluid" id="bgimg">
+    <div class="row" style="padding-top: 100px;">
+        <div class="col-md-4"></div>
+        <div class="col-md-4" style="border-style: groove;">
+            <form [formGroup]="searchFlightForm" style="padding-left: 20px; " class="container-fluid">
+                <h3 class="text-center">Search Flight</h3>
+                <hr>
+                <label>Source:</label>
+                <input type="text" class="form-control" formControlName="source">
+
+                <label>Destination:</label>
+                <input type="text" class="form-control" formControlName="destination">
+                <i class="fas fa-calendar-week fa-2x" aria-hidden="true"></i> <label>Date Of Journey</label>
+                <input type="date" class="form-control" formControlName="jdate">
+                <br>
+                <input type="submit" value="Search" style="width: 30%;" class="btn btn-primary" (click)="fnSearch()" />
+                <br>
+                <br>
+                <br>
+                <br>
+            </form>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+
+    <div class="row" style="padding-top: 100px;">
+        <div class="col-md-2"></div>
+
+        <div class="col-md-8">
+            <table class="table table-bordered">
+                <thead>
+                    <th>Flight Id</th>
+                    <th>Source</th>
+                    <th>Destination</th>
+                    <th>Date</th>
+                    <th>Arrival Time</th>
+                    <th>Departure Time</th>
+                    <th>Duration</th>
+                    <th></th>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let s of flightchart">
+                        <td>{{s.flight_id}}</td>
+                        <td>{{s.source}}</td>
+                        <td>{{s.destination}}</td>
+                        <td>{{ s.sdate | date:"dd/MM/yyyy"}}</td>
+                        <td>{{s.atime }}</td>
+                        <td>{{s.stime }}</td>
+                        <td>{{s.duration }}</td>
+                        <td> <input type="submit" class="btn btn-success" value="Book" (click)="fnBook(s.id)" /></td>
+                    </tr>
+                    <tr *ngIf="notavailable">
+
+                        <td>
+                            <h3 class="text-center">No flight is available for this route</h3>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <br>
+            <br>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>

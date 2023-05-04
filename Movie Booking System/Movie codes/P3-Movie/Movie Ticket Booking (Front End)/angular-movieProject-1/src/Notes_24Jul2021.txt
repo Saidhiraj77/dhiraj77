@@ -1,0 +1,91 @@
+1) transaction 
+	
+so far we have seen demos on master tables
+	CRUD
+what is a transaction
+
+a logged user choose a product from the list of products displayed or searched
+
+1) customer
+2) product
+	these 2 are masters		They do not have foreign key. so they are masters
+					simple	 no dependencies
+
+but
+3) cart
+4) sales
+	here, 
+		invoiceNo (pk) autogenerates
+		date		automatically taken from system date
+		productId	taken from which product he clicked "Buy now" button
+		customerId	from his login info		"localStorage"	in angular
+		price		taken from product table
+		quantity	ask the user to enter. (or) he click	- 1 +	button 		in swiggy for ex
+
+CRUD 	was simple
+	because, mostly all info are typed by the user in a single form
+
+Why transaction is complex?
+	not all the information are typed by the user in a single form
+
+Customer
+Product
+Sale
+
+
+1) angular
+2) spring boot rest api
+
+
+
+CREATE TABLE PRODUCT
+(
+	id bigint primary key,
+	name varchar(100),
+    category varchar(100),
+    price float(10,2)
+);
+
+
+CREATE TABLE CUSTOMER
+(
+	id bigint primary key,
+	firstName varchar(100),
+    lastName varchar(100),
+    password varchar(100)
+);
+
+
+CREATE TABLE ORDER_DETAILS
+(
+	id bigint primary key,
+	orderDate date,
+    product_id bigint,
+    customer_id bigint,
+    quantity bigint
+);
+
+ALTER TABLE ORDER_DETAILS ADD CONSTRAINT fkpid1 FOREIGN KEY(product_id) REFERENCES PRODUCT(id);
+ALTER TABLE ORDER_DETAILS ADD CONSTRAINT fkcid1 FOREIGN KEY(customer_id) REFERENCES CUSTOMER(id);
+
+
+
+Interface Queries
+{
+	public static final INSERT="INSERT INTO...";
+
+}
+
+
+new requirements:
+	get distinct categories from product table
+
+
+to place an order successfully
+
+	id		auto generate
+	orderDate	system date
+	product_id	got it from button click event
+	customer_id	localStorage
+	quantity	1
+

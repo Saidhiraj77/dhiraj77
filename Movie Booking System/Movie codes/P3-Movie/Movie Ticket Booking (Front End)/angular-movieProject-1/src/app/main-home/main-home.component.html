@@ -1,0 +1,275 @@
+ <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style>
+        #str,#str1,#str2,#str3,#str4 {
+         vertical-align: middle;
+         font-size: 12px;
+        }
+        .new-release {
+            color: brown;
+            font-size: 18px;
+            vertical-align: bottom;
+        }
+     </style>
+ </head>
+
+    <app-courasel-movie></app-courasel-movie><br>
+    <div class="container-flex">
+        <h2>
+          <span style="padding-left: 18px; color: whitesmoke;"> Featured Movies</span>
+        </h2>
+        <div class="card-deck" >  
+            <div class="col-lg-3 col-md-4 mt-2" > 
+             <div class="card" >
+                <img class="card-img-top hoverable"  src="https://wallpapercave.com/wp/wp4027523.jpg" alt="" >
+                <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75))">
+                    <h5 class="card-title"style="color:whitesmoke">Bahubali
+                           <span class="badge badge-primary">4.4
+                            <i id="str" class="material-icons icon-size">star</i>
+                           </span> 
+                    </h5>
+
+                    <p class="card-text" > </p>
+                   
+                        <button type="button" class="btn btn-success" (click)="fnBook()" data-toggle="modal" data-target="#myModal">
+                            <span class="material-icons">movie_filter</span> Book Movie
+                        </button>
+                        &emsp;&emsp;&nbsp;
+                        <span class="material-icons col-4 text-secondary "  style="font-size:28px; vertical-align: middle ;">
+                            favorite_border
+                        </span> <br><br>
+                        <div class="alert alert-danger alert-dismissible" *ngIf=status >
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <strong>Info!</strong> Please<a [routerLink]="['/login']"> Login  </a> to Book.
+                          </div>
+                </div>
+             </div>
+        </div>
+        
+<!--         </div>  -->
+<div class="col-lg-3 col-md-4 mt-2"> 
+    <div class="card ">
+       <img class="card-img-top hoverable"  src="https://in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/love-story-et00124288-22-01-2021-07-26-26.jpg" alt="" style="background-image: ;">
+       <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75))">
+           <h5 class="card-title"style="color:whitesmoke">Love Story
+                  <span class="badge badge-primary">4.4
+                   <i id="str" class="material-icons icon-size">star</i>
+                  </span> 
+                </h5>
+           <p class="card-text" > </p>
+          
+               <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                   <span class="material-icons">movie_filter</span> Book Movie
+               </button>
+               &emsp;&emsp;&nbsp;
+               <span class="material-icons col-4 text-secondary "  style="font-size:28px; vertical-align: middle ;">
+                   favorite_border
+                </span> <br><br>
+                <div class="alert alert-danger alert-dismissible" *ngIf=status >
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Info!</strong> Please<a [routerLink]="['/login']"> Login  </a> to Book.
+                  </div>
+       </div>
+    </div>
+</div>
+
+ <!--    </div> -->  
+ <div class="col-lg-3 col-md-4 mt-2"> 
+    <div class="card ">
+       <img class="card-img-top hoverable"  src="https://in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/rrr-et00094579-27-07-2021-11-33-17.jpg" alt="">
+       <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75))">
+           <h5 class="card-title"style="color:whitesmoke">RRR
+                  <span class="badge badge-primary">4.4
+                   <i id="str" class="material-icons icon-size">star</i>
+                  </span> 
+           </h5>
+
+
+           <p class="card-text" > </p>
+          
+               <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                   <span class="material-icons">movie_filter</span> Book Movie
+               </button>
+               &emsp;&emsp;&nbsp;
+               <span class="material-icons col-4 text-secondary "  style="font-size:28px; vertical-align: middle ;">
+                   favorite_border
+                </span> <br><br>
+                <div class="alert alert-danger alert-dismissible" *ngIf=status >
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Info!</strong> Please<a [routerLink]="['/login']"> Login  </a> to Book.
+                  </div>       </div>
+    </div>
+</div>
+ <!--    </div> -->  
+
+ <div class="col-lg-3 col-md-4 mt-2"> 
+    <div class="card ">
+       <img class="card-img-top hoverable"  src="https://www.deccanherald.com/sites/dh/files/articleimages/2020/07/12/Radhe-1594550665.jpg" alt="">
+       <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75))">
+           <h5 class="card-title"style="color:whitesmoke">Radhe Shyam
+                  <span class="badge badge-primary">4.4
+                   <i id="str" class="material-icons icon-size">star</i>
+                  </span> 
+           </h5>
+
+           <p class="card-text" > </p>
+          
+               <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                   <span class="material-icons">movie_filter</span> Book Movie
+               </button>
+               &emsp;&emsp;&nbsp;
+               <span class="material-icons col-4 text-secondary "  style="font-size:28px; vertical-align: middle ;">
+                   favorite_border
+                </span> <br><br>
+                <div class="alert alert-danger alert-dismissible" *ngIf=status >
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Info!</strong> Please<a [routerLink]="['/login']"> Login  </a> to Book.
+                  </div>
+       </div>
+    </div>
+</div>
+ <!--    </div> -->  
+
+ <div class="col-lg-3 col-md-4 mt-2"> 
+    <div class="card ">
+       <img class="card-img-top hoverable"  src="https://www.filmibeat.com/ph-big/2020/04/pushpa_158633250000.jpg" alt="">
+       <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75))">
+           <h5 class="card-title"style="color:whitesmoke">Pushpa
+                  <span class="badge badge-primary">4.4
+                   <i id="str" class="material-icons icon-size">star</i>
+                  </span> 
+           </h5>
+
+
+           <p class="card-text" > </p>
+          
+               <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                   <span class="material-icons">movie_filter</span>Book Movie
+               </button>
+               &emsp;&emsp;&nbsp;
+               <span class="material-icons col-4 text-secondary "  style="font-size:28px; vertical-align: middle ;">
+                   favorite_border
+                </span> <br><br>
+                <div class="alert alert-danger alert-dismissible" *ngIf=status >
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Info!</strong> Please<a [routerLink]="['/login']"> Login  </a> to Book.
+                  </div>
+       </div>
+    </div>
+</div>
+
+<div class="col-lg-3 col-md-4 mt-2"> 
+    <div class="card ">
+       <img class="card-img-top hoverable"  src="https://in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/kgf-chapter-2-et00098647-08-01-2021-04-38-18.jpg" alt="">
+       <div class="card-body" style="background-image: linear-gradient(rgba(17, 15, 15, 0.75),rgba(0,0,0,0.75))">
+           <h5 class="card-title"style="color:whitesmoke"> RRR
+                  <span class="badge badge-primary">4.4
+                   <i id="str" class="material-icons icon-size">star</i>
+                  </span> 
+           </h5>
+
+           <p class="card-text" > </p>
+          
+               <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                   <span class="material-icons">movie_filter</span> Book Movie
+               </button>
+               &emsp;&emsp;&nbsp;
+               <span class="material-icons col-4 text-secondary "  style="font-size:28px; vertical-align: middle ;">
+                   favorite_border
+                </span> <br><br>
+                <div class="alert alert-danger alert-dismissible" *ngIf=status >
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Info!</strong> Please<a [routerLink]="['/login']"> Login  </a> to Book.
+                  </div>
+       </div>
+    </div>
+</div>
+
+<div class="col-lg-3 col-md-4 mt-2"> 
+    <div class="card ">
+       <img class="card-img-top hoverable"  src="https://images.moviebuff.com/8145811a-35f7-4a45-9391-da8195baf885?w=1000" alt="">
+       <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75))">
+           <h5 class="card-title"style="color:whitesmoke"> 96
+                  <span class="badge badge-primary">4.4
+                   <i id="str" class="material-icons icon-size">star</i>
+                  </span> 
+           </h5>
+
+         
+
+           <p class="card-text" > </p>
+          
+               <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                   <span class="material-icons">movie_filter</span> Book Movie
+               </button>
+               &emsp;&emsp;&nbsp;
+               <span class="material-icons col-4 text-secondary "  style="font-size:28px; vertical-align: middle ;">
+                   favorite_border
+                </span> <br><br>
+                <div class="alert alert-danger alert-dismissible" *ngIf=status >
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Info!</strong> Please<a [routerLink]="['/login']"> Login  </a> to Book.
+              </div>
+       </div>
+    </div>
+</div>
+
+<div class="col-lg-3 col-md-4 mt-2"> 
+    <div class="card ">
+       <img class="card-img-top hoverable"  src="https://in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/karnan-et00305671-15-02-2021-05-41-32.jpg" alt="">
+       <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75))">
+           <h5 class="card-title"style="color:whitesmoke">Karnan
+                  <span class="badge badge-primary">4.4
+                   <i id="str" class="material-icons icon-size">star</i>
+                  </span> 
+           </h5>
+
+           <p class="card-text" > </p>
+          
+               <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                   <span class="material-icons">movie_filter</span>  Book Movie
+               </button>
+               &emsp;&emsp;&nbsp;
+               <span class="material-icons col-4 text-secondary "  style="font-size:28px; vertical-align: middle ;">
+                   favorite_border
+                </span> <br><br>
+                <div class="alert alert-danger alert-dismissible" *ngIf=status >
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Info!</strong> Please<a [routerLink]="['/login']"> Login  </a> to Book.
+                  </div>
+       </div>
+    </div>
+</div>
+</div> <br>
+
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title"> <strong>Info !</strong></h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+            Please<a [routerLink]="['/login']"> Login  </a> to Book.
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+<br><br>
+
+

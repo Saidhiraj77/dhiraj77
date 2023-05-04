@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="otp.component.css">
+
+<div class="container" style="background-image: url(https://i.pinimg.com/originals/70/b5/21/70b521fe4c636233d83c0e8cb57ba359.png);background-repeat: no-repeat;">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-6" style="border-style: groove ; height: 600px;">
+            <form [formGroup]="paymentForm">
+                <h1 style="padding-top: 20px " class="text-center"> Email Verification</h1>
+                <hr style="border-style: groove ;">
+                <br>
+                <label>Email:</label>
+                <input type="email" formControlName="email" class="form-control">
+                <br>
+                <br>
+                <label style="padding-right: 10px;">Generate One Time Password:</label>
+                <input type="button" style="width: 40%;" class="btn btn-success" value="Generate Otp" (click)="fnGenerateOtp()"> <br>
+                <br>
+                <br>
+                <label>Enter One Time Password:</label>
+                <input type="text" name="abcd" class="form-control" [(ngModel)]="txtOtp" (keyup)="fnValidateOtp()" formControlName="otp">
+                <br>
+                <br> &nbsp;&nbsp;
+                <input type="button" style="width: 46%;" value="Pay" class="btn btn-success" (click)="fnPayment()" [ngClass]="{disabled : x}"> &nbsp;&nbsp;&nbsp;
+                <input type="reset" style="width: 46%;" value="Reset" class="btn btn-warning">
+            </form>
+            <br>
+            <br>
+            <br>
+            <br>
+
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-4">
+            <div *ngIf=valid style="padding-left: 60px;">
+                <h1> Your Payment is successful</h1>
+                <h5> Please check My trips for your booking details !!!!!</h5>
+                <img src="https://media.tenor.com/images/cbae2dfd31aa5ec2fcb7f46b65e1550f/tenor.gif">
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>

@@ -1,0 +1,117 @@
+<div class="text-white" style="padding-top: 100px;" *ngIf="!nextPage">
+  <div class="container">
+    <div class="row">
+      <div class="form_bg" style="width:500px;height: 530px;">
+        <form #signupform="ngForm"> 
+          <h2 class="text-center">User SignUp</h2>
+
+          <div class="form-group p-2" >
+            <label style="float: left;">First Name:</label>
+            <input type="text" class="form-control" name="firstName" [(ngModel)]="pacuser.firstName" placeholder="firstname" required #firstname="ngModel"
+            [class.is-invalid]="firstname.invalid && firstname.touched"> 
+            <small class="text-danger"  [class.d-none]="firstname.valid || firstname.untouched">Firstname is Required</small>
+          </div>
+          <div class="form-group p-2" >
+            <label style="float: left;">Last Name:</label>
+            <input type="text" class="form-control" name="lastName" [(ngModel)]="pacuser.lastName" placeholder="lastname" required #lastname="ngModel"
+            [class.is-invalid]="lastname.invalid && lastname.touched">
+            <span class="text-danger" [class.d-none]="lastname.valid || lastname.untouched">Lastname is Required</span>
+          </div>
+          <div class="form-group p-2" >
+            <label style="float: left;">Age:</label>
+            <input type="number" class="form-control" name="age" [(ngModel)]="pacuser.age" placeholder="Age" min="18" max="100" required #age="ngModel"
+            [class.is-invalid]="age.invalid && age.touched"> 
+            <span class="text-danger"  [class.d-none]="age.valid || age.untouched">Age is Required and You Must Be At Least 18 Years Old to get vaccinated</span>
+          </div>
+          <!--div *ngIf="(age.errors && (age.touched && age.invalid ))"> 
+            <span class="text-danger" *ngIf="age.errors.required">Age is Required</span>
+           <span class="text-danger" *ngIf="age.value < 15">enter valid age</span>
+          </div-->
+
+          <div class="form-group p-2">
+            <label style="float: left;">Email ID:</label>
+            <input type="email" class="form-control" name="email" [(ngModel)]="pacuser.email" placeholder="Email ID" required pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" #email="ngModel" 
+            [class.is-invalid]="email.invalid && email.touched">
+            <!--span class="text-danger"  [class.d-none]="email.valid || email.untouched">Email is Required</span-->
+          </div>
+          <div *ngIf="(email.errors && (email.touched && email.invalid ))"> 
+            <span class="text-danger" *ngIf="email.errors.required">Email ID is Required</span>
+           <span class="text-danger" *ngIf="email.errors.pattern">Enter a valid Email</span>
+          </div>
+          <!--div class="form-group p-2" >
+            <label style="float: left;">Gender:</label>
+            <input type="text" class="form-control" name="gender" [(ngModel)]="pacuser.gender" placeholder="gender" required #gender="ngModel"
+            [class.is-invalid]="gender.invalid && gender.touched">
+            <span class="text-danger" [class.d-none]="gender.valid || gender.untouched">Gender is Required</span>
+          </div-->
+          <div class="form-group p-2">
+            <label style="float: left;">Gender:</label><br>
+
+            <select class="form-control" name="gender" id="gender" [(ngModel)]="pacuser.gender" required #gender="ngModel"
+            [class.is-invalid]="gender.invalid &&gender.touched">
+              
+              <option value="Female">Female</option>
+              <option value="Male">Male</option>
+              <option value="Others">Others</option>
+            </select>
+            <span class="text-danger" [class.d-none]="gender.valid || gender.untouched">Gender is required</span>
+          </div>    
+
+          <div class="align-center">
+            <button [disabled]="signupform.form.invalid" class="btn btnStyle" id="nextPage" (click)="nextpage()">Save and Next</button>
+          </div>
+          <div class="align-center" *ngIf="invalidLogin">
+              <span class="text-danger">Please fill all the details correctly</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="text-white" style="padding-top: 100px;" *ngIf="nextPage">
+  <div class="container">
+    <div class="row">
+      <div class="form_bg" style="width:500px;height:380px;">
+        <form #signupform="ngForm">
+          <h2 class="text-center">User SignUp</h2>
+
+          <div class="form-group p-2" >
+            <label style="float: left;">User Name:</label>
+            <input type="text" class="form-control" name="username" [(ngModel)]="pacuser.userName" placeholder="User id" minlength="5" required #username="ngModel"
+            [class.is-invalid]="username.invalid && username.touched">
+          </div>
+            <div *ngIf="(username.errors && (username.touched && username.invalid ))"> 
+            <span class="text-danger" *ngIf="username.errors.required">Username is Required</span>
+           <span class="text-danger" *ngIf="username.errors.minlength">Username should be atleast 5 characters</span>
+          </div>
+
+          <div class="form-group p-2">
+            <label style="float: left;">Password:</label>
+           
+       <input type="password" class="form-control" name="password" [(ngModel)]="pacuser.password" placeholder="Password" required minlength="6" #password="ngModel"
+       [class.is-invalid]="password.invalid && password.touched">
+       <!--span class="text-danger" [class.d-none]="password.valid || password.untouched">Password is Required</span-->
+          </div>
+           <div *ngIf="(password.errors && (password.touched && password.invalid ))"> 
+            <span class="text-danger" *ngIf="password.errors.required">Password is Required</span>
+           <span class="text-danger" *ngIf="password.errors.minlength">Password should be atleast 6 characters</span>
+          </div>
+          <div class="form-group p-2">
+            <label style="float: left;">Confirm Password:</label>
+            <input type="password" class="form-control" name="cpassword" [(ngModel)]="confirmPassword" placeholder="Password" required #cpassword="ngModel"
+            [class.is-invalid]="cpassword.invalid && cpassword.touched">
+            <small class="text-danger" [class.d-none]="(cpassword.value==password.value) || cpassword.untouched">Password and Confirm Password should be same</small>
+          </div>
+
+          <div class="align-center">
+            <button  class="btn btnStyle" id="backPage" (click)="backPage()">Back</button>
+            <button  class="btn btn-success" type="submit" value="SignupPage" id="adminsignup" (click)="signUp()" [disabled]="signupform.form.invalid">SignUp</button>
+          </div>
+          <div class="align-center" *ngIf="invalidLogin">
+              <span class="text-danger">Please fill all the detials</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

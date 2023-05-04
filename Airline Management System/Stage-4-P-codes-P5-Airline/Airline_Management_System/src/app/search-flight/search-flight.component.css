@@ -1,0 +1,33 @@
+label {
+    color: antiquewhite;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: medium;
+}
+
+h3 {
+    color: antiquewhite;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: x-large;
+}
+
+#bgimg {
+    background-image: url(../../assets/images/wallpaper2you_55766.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+th {
+    font-size: x-large;
+    color: ghostwhite;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 100px;
+    text-align: center;
+}
+
+tr {
+    font-size: medium;
+    color: ghostwhite;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 100px;
+    text-align: center;
+}

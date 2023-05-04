@@ -1,0 +1,10 @@
+label {
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1,
+h5 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: italic;
+}

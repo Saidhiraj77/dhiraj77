@@ -1,0 +1,94 @@
+<div class="background-wrapper" style="background-image: url(../../assets/images/aeroplane-bg.jpg);">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="payment.component.css">
+
+    <div class="container-fluid">
+        <header style="color: ghostwhite;">
+            <h1 style="padding-left: 10px;">Payment</h1>
+            <hr>
+        </header>
+        <div class="col-sm-6 col-sm-offset-3">
+            <div class="panel-group" style="background-color: black">
+                <div class="panel panel-default panel-transparent">
+                    <div class="panel-heading">
+                        <legend style="text-align: center">
+                            <p style="color: black"><b> Payment Information</b></p>
+                        </legend>
+                    </div>
+                    <div class="panel-body" style="background-image: url(../../assets/images/254367.png) ; background-repeat: no-repeat;">
+                        <form class="form-horizontal" style="padding: 0 5rem 0 5rem; width: 100%" [formGroup]="paymentForm">
+                            <div class="form-group" style="color: grey;">
+                                <h1 class="text-center" *ngIf=value style="color: ghostwhite; padding-bottom: 15px; ">
+                                    You have to pay Amount Rs. {{ message | titlecase}}</h1>
+
+                                <label class="radio-inline">
+                                        <input type="radio" name="optradio" style="height: 5rem">
+                                        <img src="../../assets/images/mastercard.jpg" width="60" height="50">
+                                    </label>
+                                <label class="radio-inline">
+                                        <input type="radio" name="optradio" style="height: 5rem">
+                                        <img src="../../assets/images/visa.png" width="60" height="50">
+                                    </label>
+                                <label class="radio-inline">
+                                        <input type="radio" name="optradio" style="height: 5rem">
+                                        <img src="../../assets/images/UPI.jpg" width="60" height="50">
+                                    </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name">Card Number</label>
+                                <div [ngClass]="{'has-error': f.cardNumber.touched && f.cardNumber.errors}">
+                                    <input type="0000-0000" class="form-control trans-input-area" placeholder="Card Number" formControlName="cardNumber">
+                                </div>
+                                <span class="alert-danger" *ngIf="f.cardNumber.touched && f.cardNumber.errors
+                            required">cardNumber is required</span>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div style="float: left; width: 46%">
+                                    <label for="Country">Expiry</label>
+                                    <div [ngClass]="{'has-error': f.eDate.touched && f.eDate.errors}">
+                                        <input type="month" class="form-control trans-input-area" placeholder="month/year" formControlName="eDate">
+                                    </div>
+                                    <span class="alert-danger" *ngIf="f.eDate.touched && f.eDate.errors
+                                required">eDate is required</span>
+                                </div>
+
+                                <div style="float: right; width: 46%">
+                                    <label for="Country">CVV</label>
+                                    <div [ngClass]="{'has-error': f.cvc.touched && f.cvc.errors}">
+                                        <input type="number" class="form-control trans-input-area" placeholder="CVV" formControlName="cvc">
+                                        <span class="alert-danger" *ngIf="f.cvc.touched && f.cvc.errors
+                                        required">Cvv is required</span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="form-group">
+                                <div style="align-items: center; width: 46%;">
+                                    <label>Enter the Amount:</label>
+                                    <div [ngClass]="{'has-error': f.amount.touched && f.amount.errors}">
+                                        <input type="number" class="form-control trans-input-area" placeholder="Pay Amount" formControlName="amount">
+                                    </div>
+                                </div>
+                                <span class="alert-danger" *ngIf="f.amount.touched && f.amount.errors
+                            required">amount is required</span>
+                            </div>
+
+                            <br>
+                            <div>
+                                <button class="btn btn-primary btn-block trans-input-area" type="submit" (click)="fnSendOtp()">Click to
+                                    Pay</button>
+                            </div>
+                        </form>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
